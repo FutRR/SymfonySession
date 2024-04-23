@@ -38,6 +38,10 @@
         {% endblock %}
         </main>
 
+        <div class="back-to-top">
+            <a href="#"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+
         <footer>
 
         </footer>
@@ -46,6 +50,7 @@
         {% block importmap %}
         {{ importmap('app') }}
         {% endblock %}
+        <script src="https://kit.fontawesome.com/19a031a4c5.js" crossorigin="anonymous"></script>
         <script src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
 

@@ -1,6 +1,7 @@
 body{
     font-family: "League Spartan", sans-serif;
     background-color: #f6f6f6;
+    scroll-behavior: smooth;
 }
 
 .orange{
@@ -31,6 +32,7 @@ body{
     color: #000;
     text-decoration: none;
     font-size: 28px;
+    transition: 400ms ease;
 }
 
 .nav-link a:visited{
@@ -65,7 +67,9 @@ main{
     table{
         border: 1px solid #000;
         border-collapse: collapse;
+        min-width: fit-content;
         width: 70%;
+        font-size: 20px;
     }
 
     th{
@@ -78,3 +82,91 @@ main{
         border: 1px solid #000;
         padding: 8px;
     }
+
+
+    /* LISTS */
+
+    .list{
+        border: 2px solid #FF9900;
+        border-radius: 15px;
+        min-width: 30vw;
+        width: fit-content;
+        height: fit-content;
+        padding: 10px 8px;
+        margin: 10px;
+        transition: 400ms ease;
+        font-size: 20px;
+    }
+
+    .categorie{
+        min-width: fit-content !important;
+    }
+
+    .list a, a:visited{
+        color: #000;
+        text-decoration: none;
+    }
+
+    .list p{
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .list li{
+        list-style-type: none;
+    }
+
+    .list li::before{
+        content: '- '
+    }
+
+    .list:hover{
+        transform: scale(1.1);
+    }
+
+
+/* BACK TO TOP */
+
+.back-to-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    transition: 400ms ease;
+}
+
+.back-to-top:hover{
+    background-color: #000;
+}
+
+.back-to-top i{
+    font-size: 30px;
+}
+
+.back-to-top a{
+    color: #FF9900;
+}
+
+
+.back-to-top a:visited{
+    color: #FF9900;
+}
+
+
+.back-to-top:hover a{
+    color: #FF9900;
+}
+
+.back-to-top:hover a:visited{
+    color: #FF9900;
+}
+
+.back-to-top:hover i{
+    color: #FF9900;
+}

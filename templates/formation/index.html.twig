@@ -5,18 +5,18 @@
 {% block body %}
 <h1>Liste des formations</h1>
 
-<ul>
     {% for formation in formations %}
-    <li>
-        <a href="{{ path('show_formation', {'id': formation.id}) }}">{{ formation.titreFormation }}</a>
-        <p>
+    <div class="list formation">
+        <a href="{{ path('show_formation', {'id': formation.id}) }}">
+        <p>{{ formation.titreFormation }}</p>
+        <ul>
             {% for session in formation.sessions %}
-                {{ session }}
+                <li>{{ session.nomSession }}</li>
             {% endfor %}
-        </p>
-    </li> 
+        </ul>
+        </a>
+    </div> 
     {% endfor %}
-</ul>
 
 
 {% endblock %}
