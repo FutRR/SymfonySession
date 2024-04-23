@@ -100,7 +100,7 @@ class Stagiaire
 
     public function getDateNaissanceFr(): ?string
     {
-        return $this->dateNaissance->format("d-m-Y");
+        return $this->dateNaissance->format("d/m/Y");
     }
 
     public function getAge(): ?string

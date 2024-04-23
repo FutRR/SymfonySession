@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categorie.nomCategorie }}{% endblock %}
+
+{% block body %}
+<h1>{{ categorie.nomCategorie }}</h1>
+
+<h2>Modules</h2>
+
+{% if categorie.unites | length > 0 %}
+
+    {% for unite in categorie.unites %}
+        <li>{{ unite }}</li>
+    {% endfor %}
+
+{% else %}
+    <p>Aucun module</p>
+{% endif %}
+
+{% endblock %}

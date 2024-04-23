@@ -48,6 +48,9 @@ class Session
     #[ORM\OneToMany(targetEntity: Programme::class, mappedBy: 'Session')]
     private Collection $Programmes;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->Stagiaires = new ArrayCollection();
@@ -85,7 +88,7 @@ class Session
 
     public function getDateDebutFr(): ?string
     {
-        return $this->dateDebut->format("d-m-Y");
+        return $this->dateDebut->format("d/m/Y");
     }
 
     public function getDateFin(): ?\DateTimeInterface
@@ -102,7 +105,7 @@ class Session
 
     public function getDateFinFr(): ?string
     {
-        return $this->dateFin->format("d-m-Y");
+        return $this->dateFin->format("d/m/Y");
     }
 
     public function getNbPlaces(): ?int
@@ -201,5 +204,17 @@ class Session
     public function __toString()
     {
         return $this->getNomSession();
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }

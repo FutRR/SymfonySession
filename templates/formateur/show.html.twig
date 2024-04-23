@@ -19,12 +19,12 @@
 <div class="container">
 
     <h2>Sessions prévues :</h2>
-    {% if stagiaire.sessions | length > 0 %}
-        <ul>
-            {% for session in stagiaire.sessions %}
-                <li><p>{{ session }} (du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p></li>
-            {% endfor %}
-        </ul>
+    {% if formation.sessions | length > 0 %}
+
+        {% for session in stagiaire.session %}
+            <p>{{ session }}</p>
+        {% endfor %}
+
     {% else %}
         <p>Aucune session</p>
     {% endif %}

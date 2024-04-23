@@ -9,6 +9,11 @@
     {% for formation in formations %}
     <li>
         <a href="{{ path('show_formation', {'id': formation.id}) }}">{{ formation.titreFormation }}</a>
+        <p>
+            {% for session in formation.sessions %}
+                {{ session }}
+            {% endfor %}
+        </p>
     </li> 
     {% endfor %}
 </ul>
