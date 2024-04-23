@@ -14,30 +14,40 @@
     </head>
     <body>
 
-        <nav id="navbar">
-            <span class="logo"><span class="orange">Elan</span>Session</span>
+        <header>
 
-            <ul class="nav-links">
-                <li class="nav-link"><a href="{{ path('app_formation')}}">Formations</a></li>
-                <li class="nav-link"><a href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
-                <li class="nav-link"><a href="{{ path('app_categorie')}}">Catégories</a></li>
-            </ul>
+            <nav id="navbar">
+                <span class="logo"><span class="orange">Elan</span>Session</span>
 
-            <ul class="nav-links">
-                <li class="nav-link"><a class="orange" href="">Inscription</a></li>
-                <li class="nav-link"><a href="">Connexion</a></li>
-            </ul>
-        </nav>
+                <ul class="nav-links">
+                    <li class="nav-link"><a href="{{ path('app_formation')}}">Formations</a></li>
+                    <li class="nav-link"><a href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
+                    <li class="nav-link"><a href="{{ path('app_categorie')}}">Catégories</a></li>
+                </ul>
 
-        <main class="container">
+                <ul class="nav-links">
+                    <li class="nav-link"><a class="orange" href="">Inscription</a></li>
+                    <li class="nav-link"><a href="">Connexion</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <main>
         {% block body %}
         {% endblock %}
         </main>
 
+        <footer>
+
+        </footer>
+
         {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% block importmap %}
+        {{ importmap('app') }}
+        {% endblock %}
         <script src="{{ asset('js/script.js') }}"></script>
-    {% endblock %}
+        {% endblock %}
 
     </body>
 </html>
