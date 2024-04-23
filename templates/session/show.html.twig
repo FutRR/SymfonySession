@@ -8,6 +8,9 @@
 <div class="container">
     <h2>Informations :</h2>
     <p>Encadré par {{ session.formateur }}</p>
+    {% if session.description | length > 0 %}
+        <p>{{ session.description }}</p>
+    {% endif %}
     <p>Du {{ session.dateDebutFr }} au {{ session.dateFinFr }}</p>
     <p>Nombre de places : {{ session.nbPlaces }}</p>
 </div>
