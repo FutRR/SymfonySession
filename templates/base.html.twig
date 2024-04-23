@@ -5,24 +5,27 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-            <script src="{{ asset('js/script.js') }}"></script>
-        {% endblock %}
     </head>
     <body>
 
-        <nav class="mb-3">
-            <ul class="list-group list-group-horizontal list-group">
-                <li class="list-group-item"><a href="{{ path('app_formation')}}">Liste des formations</a></li>
-                <li class="list-group-item"><a href="{{ path('app_stagiaire')}}">Liste des stagiaires</a></li>
-                <li class="list-group-item"><a href="{{ path('app_categorie')}}">Liste des catégories</a></li>
+        <nav id="navbar">
+            <span class="logo"><span class="orange">Elan</span>Session</span>
 
+            <ul class="nav-links">
+                <li class="nav-link"><a href="{{ path('app_formation')}}">Formations</a></li>
+                <li class="nav-link"><a href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
+                <li class="nav-link"><a href="{{ path('app_categorie')}}">Catégories</a></li>
+            </ul>
+
+            <ul class="nav-links">
+                <li class="nav-link"><a class="orange" href="">Inscription</a></li>
+                <li class="nav-link"><a href="">Connexion</a></li>
             </ul>
         </nav>
 
@@ -30,6 +33,11 @@
         {% block body %}
         {% endblock %}
         </main>
+
+        {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+        <script src="{{ asset('js/script.js') }}"></script>
+    {% endblock %}
 
     </body>
 </html>
