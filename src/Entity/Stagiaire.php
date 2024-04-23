@@ -98,6 +98,19 @@ class Stagiaire
         return $this;
     }
 
+    public function getDateNaissanceFr(): ?string
+    {
+        return $this->dateNaissance->format("d-m-Y");
+    }
+
+    public function getAge(): ?string
+    {
+        $now = new \DateTime();
+        $interval = $this->dateNaissance->diff($now);
+        return $interval->format('%Y');
+    }
+
+
     public function getTelephone(): ?string
     {
         return $this->telephone;
@@ -144,5 +157,10 @@ class Stagiaire
         $this->Sessions->removeElement($session);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNomStagiaire() . " " . $this->getPrenomStagiaire();
     }
 }

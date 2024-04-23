@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ stagiaire }}{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1>Fiche Stagiaire</h1>
+
+    <h2>À Propos</h2>
+    <h3>{{ stagiaire }}</h3>
+    <p>Date de naissance : {{ stagiaire.dateNaissanceFr }} - {{ stagiaire.age }} ans</p>
+    <p>Ville : {{ stagiaire.ville }}</p>
+    <p>Email : {{ stagiaire.emailStagiaire }}</p>
+    <p>Téléphone : {{ stagiaire.telephone }}</p>
+
+</div>
+{% endblock %}
