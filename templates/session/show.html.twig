@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ session }}{% endblock %}
+
+{% block body %}
+<h1>{{ session }}</h1>
+
+<div class="container">
+    <h2>Informations :</h2>
+    <p>Encadré par {{ session.formateur }}</p>
+    <p>Du {{ session.dateDebutFr }} au {{ session.dateFinFr }}</p>
+    <p>Nombre de places : {{ session.nbPlaces }}</p>
+</div>
+
+<div class="container">
+    <h2>Modules :</h2>
+
+    {% if session.programmes | length > 0 %}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Jours</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for programme in session.programmes %}
+                <tr>
+                    <td>{{ programme.unite }}</td>
+                    <td>{{ programme.nbJours }}</td>
+                </tr>
+            {% endfor %}
+                        
+            </tbody>
+        </table>
+
+    {% else %}
+        <p>Aucun module disponible</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

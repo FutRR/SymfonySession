@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Formation;
 use App\Repository\FormationRepository;
+use App\Repository\SessionRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,10 +21,13 @@ class FormationController extends AbstractController
     }
 
     #[Route('/formation/{id}', name: 'show_formation')]
-    public function show(Formation $formation): Response
+    public function show(Formation $formation, SessionRepository $sessionRepository): Response
     {
+
+        $sessions = $sessionRepository->findBy(["Formation" => "1"], ["dateDebut" => "ASC"]);
         return $this->render("formation/show.html.twig", [
-            'formation' => $formation
+            'formation' => $formation,
+            'sessions' => $sessions
         ]);
     }
 }

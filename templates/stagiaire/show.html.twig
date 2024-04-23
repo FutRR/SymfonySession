@@ -15,4 +15,18 @@
     <p>Téléphone : {{ stagiaire.telephone }}</p>
 
 </div>
+
+<div class="container">
+
+    <h2>Sessions prévues :</h2>
+    {% if formation.sessions | length > 0 %}
+
+        {% for session in stagiaire.session %}
+            <p>{{ session }}</p>
+        {% endfor %}
+
+    {% else %}
+        <p>Aucune session</p>
+    {% endif %}
+</div>
 {% endblock %}
