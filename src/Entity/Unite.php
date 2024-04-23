@@ -24,6 +24,10 @@ class Unite
     #[ORM\OneToMany(targetEntity: Programme::class, mappedBy: 'Unite')]
     private Collection $Programmes;
 
+    #[ORM\ManyToOne(inversedBy: 'Unites')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $Categorie = null;
+
     public function __construct()
     {
         $this->Programmes = new ArrayCollection();
@@ -72,6 +76,18 @@ class Unite
                 $programme->setUnite(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->Categorie;
+    }
+
+    public function setCategorie(?Categorie $Categorie): static
+    {
+        $this->Categorie = $Categorie;
 
         return $this;
     }
