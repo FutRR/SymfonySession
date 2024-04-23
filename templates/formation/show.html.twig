@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ formation.titreFormation }}{% endblock %}
+
+{% block body %}
+<h1>{{ formation.titreFormation }}</h1>
+
+<h2>Sessions</h2>
+
+{% if formation.sessions | length > 0 %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Session</th>
+            <th>Formateur</th>
+            <th>Date début</th>
+            <th>Date Fin</th>
+            <th>Nombre de places</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for session in formation.sessions %}
+        <tr>
+            <td>{{ session.nomSession }}</td>
+            <td>{{ session.formateur.nomFormateur }}</td>
+            <td>{{ session.dateDebutFr }}</td>
+            <td>{{ session.dateFinFr }}</td>
+            <td>{{ session.nbPlaces }}</td>
+        </tr>
+    {% endfor %}
+                
+    </tbody>
+</table>
+
+{% else %}
+    <p>Aucune session disponible</p>
+{% endif %}
+
+{% endblock %}

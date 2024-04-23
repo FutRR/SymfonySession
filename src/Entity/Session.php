@@ -83,6 +83,11 @@ class Session
         return $this;
     }
 
+    public function getDateDebutFr(): ?string
+    {
+        return $this->dateDebut->format("d-m-Y");
+    }
+
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
@@ -93,6 +98,11 @@ class Session
         $this->dateFin = $dateFin;
 
         return $this;
+    }
+
+    public function getDateFinFr(): ?string
+    {
+        return $this->dateFin->format("d-m-Y");
     }
 
     public function getNbPlaces(): ?int
