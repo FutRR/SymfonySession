@@ -24,7 +24,7 @@ class FormationController extends AbstractController
     public function show(Formation $formation, SessionRepository $sessionRepository): Response
     {
 
-        $sessions = $sessionRepository->findBy(["Formation" => "1"], ["dateDebut" => "ASC"]);
+        $sessions = $sessionRepository->findBy(["Formation" => $formation->getId()], ["dateDebut" => "ASC"]);
         return $this->render("formation/show.html.twig", [
             'formation' => $formation,
             'sessions' => $sessions
