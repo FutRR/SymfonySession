@@ -3,7 +3,10 @@
 {% block title %}Liste des stagiaires{% endblock %}
 
 {% block body %}
+<div class="titre">
 <h1>Liste des stagiaires</h1>
+<a class="btn" href="{{ path('new_stagiaire')}}">Ajout</a>
+</div>
 
 <ul>
     {% for stagiaire in stagiaires %}
