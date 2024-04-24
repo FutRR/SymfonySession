@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formateur : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formateur : ~1 rows (environ)
 INSERT IGNORE INTO `formateur` (`id`, `nom_formateur`, `prenom_formateur`, `email_formateur`) VALUES
 	(1, 'MURMANN', 'Mickael', 'exemple@test.fr');
 
@@ -53,11 +53,12 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formation : ~2 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formation : ~3 rows (environ)
 INSERT IGNORE INTO `formation` (`id`, `titre_formation`) VALUES
 	(1, 'Développement Web'),
 	(2, 'Bureautique'),
-	(3, 'Commerce');
+	(3, 'Commerce'),
+	(4, 'Esthétique');
 
 -- Listage de la structure de table symfonysessionfutterer. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -128,9 +129,10 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire : ~1 rows (environ)
 INSERT IGNORE INTO `stagiaire` (`id`, `nom_stagiaire`, `prenom_stagiaire`, `email_stagiaire`, `date_naissance`, `telephone`, `ville`) VALUES
-	(1, 'FUTTERER', 'Maxime', 'futterermaxime@gmail.com', '2000-08-29', '06 52 39 73 60', 'Strasbourg');
+	(1, 'FUTTERER', 'Maxime', 'futterermaxime@gmail.com', '2000-08-29', '06 52 39 73 60', 'Strasbourg'),
+	(2, 'Test', 'Testeur', 'test@test.test', '1997-08-10', NULL, NULL);
 
 -- Listage de la structure de table symfonysessionfutterer. stagiaire_session
 CREATE TABLE IF NOT EXISTS `stagiaire_session` (
@@ -143,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~1 rows (environ)
 INSERT IGNORE INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 2);
 
