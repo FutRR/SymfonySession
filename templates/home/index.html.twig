@@ -25,19 +25,23 @@
 
 </section>
 
-<section class="dashboard-formations">
+<section id="dashboard-formations">
     <h2>Formations</h2>
-    {% for formation in formations %}
-        <div class="list formation">
-            <a href="{{ path('show_formation', {'id': formation.id}) }}">
-                <h3>{{ formation }}</h3>
-                {% for session in formation.sessions %}
-                    {{ session }}
-                    {% if not loop.last %} - {% endif %}
-                {% endfor %}
-            </a>
-        </div>
-    {% endfor %}
+    <div class="line"></div>
+
+    <div class="wrapper-formations">
+        {% for formation in formations %}
+            <div class="list formation">
+                <a href="{{ path('show_formation', {'id': formation.id}) }}">
+                    <h3>{{ formation }}</h3>
+                    {% for session in formation.sessions %}
+                        {{ session }}
+                        {% if not loop.last %} - {% endif %}
+                    {% endfor %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}

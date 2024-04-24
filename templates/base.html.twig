@@ -20,9 +20,9 @@
                 <a class="logo" href="{{ path('app_dashboard')}}"><span class="orange">Elan</span>Session</a>
 
                 <ul class="nav-links">
-                    <li class="nav-link"><a href="{{ path('app_formation')}}">Formations</a></li>
-                    <li class="nav-link"><a href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
-                    <li class="nav-link"><a href="{{ path('app_categorie')}}">Catégories</a></li>
+                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formation' %}orange{% endif %}" href="{{ path('app_formation')}}">Formations</a></li>
+                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_stagiaire' %}orange{% endif %}" href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
+                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_categorie' %}orange{% endif %}" href="{{ path('app_categorie')}}">Catégories</a></li>
                 </ul>
 
                 <ul class="nav-links">
