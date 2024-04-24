@@ -1,7 +1,10 @@
+*{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: "League Spartan", sans-serif;
     background-color: #f6f6f6;
-    scroll-behavior: smooth;
 }
 
 .orange{
@@ -132,6 +135,7 @@ form{
         height: 5px;
         border-radius: 15px;
         background-color: #000;
+        margin-bottom: 10px;
     }
 
     .dashboard-sessions{

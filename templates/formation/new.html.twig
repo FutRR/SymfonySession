@@ -4,9 +4,12 @@
 
 {% block body %}
     {% if edit %}
-    <h1>Editer une formation</h1>          
+    <h1>Editer une formation</h1>
+    <div class="line"></div>
+          
     {% else %}
-    <h1>Ajouter une formation</h1>  
+    <h1>Ajouter une formation</h1>
+    <div class="line"></div>
     {% endif %}
 
     {{ form(formAddFormation) }}
