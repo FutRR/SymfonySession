@@ -75,6 +75,11 @@ main{
     width: 100%;
 }
 
+.titre h2{
+    font-size: 34px;
+    align-self: flex-start;
+}
+
 .btn{
     display: flex;
     justify-content: center;
@@ -155,7 +160,7 @@ form{
     }
 
     .dashboard-session:hover{
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 
     .dashboard-session h4{
@@ -269,7 +274,7 @@ form{
     }
 
     .list:hover{
-        transform: scale(1.1);
+        transform: scale(0.5);
     }
 
 
@@ -282,8 +287,10 @@ form{
         padding: 8px 10px;
     }
 
-    .stagiaire-session{}
-
+    .stagiaire-sessions h2{
+        font-size: 34px;
+        align-self: flex-start;
+    }
 
 /* BACK TO TOP */
 

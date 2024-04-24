@@ -3,30 +3,35 @@
 {% block title %}{{ stagiaire }}{% endblock %}
 
 {% block body %}
-<div class="stagiaire">
+    <div class="titre">
+        <h2>Fiche Stagiaire</h2>
+    </div>
+    <div class="line"></div>
 
-    <h1>Fiche Stagiaire</h1>
+    <div class="stagiaire">
+        <h3>{{ stagiaire }}</h3>
+        <p>Date de naissance : {{ stagiaire.dateNaissanceFr }} - {{ stagiaire.age }} ans</p>
+        {% if stagiaire.ville | length > 0 %}
+            <p>Ville : {{ stagiaire.ville }}</p>
+        {% endif %}
+        <p>Email : {{ stagiaire.emailStagiaire }}</p>
+        {% if stagiaire.telephone | length > 0 %}
+            <p>Téléphone : {{ stagiaire.telephone }}</p>
+        {% endif %}
+    </div>
 
-    <h2>À Propos</h2>
-    <h3>{{ stagiaire }}</h3>
-    <p>Date de naissance : {{ stagiaire.dateNaissanceFr }} - {{ stagiaire.age }} ans</p>
-    <p>Ville : {{ stagiaire.ville }}</p>
-    <p>Email : {{ stagiaire.emailStagiaire }}</p>
-    <p>Téléphone : {{ stagiaire.telephone }}</p>
-
-</div>
-
-<div class="stagiaire-session">
-
-    <h2>Sessions prévues :</h2>
-    {% if stagiaire.sessions | length > 0 %}
-        <ul>
+    <div class="stagiaire-sessions">
+        <h2>Sessions prévues :</h2>
+        <div class="line"></div>
+        {% if stagiaire.sessions | length > 0 %}
             {% for session in stagiaire.sessions %}
-                <li><p><a href="{{ path('show_session', {'id': session.id }) }}">{{ session }}</a> (du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p></li>
+                <div class="stagiaire-session list">
+                    <h3><a href="{{ path('show_session', {'id': session.id }) }}">{{ session }}</a></h3> 
+                    <p>(du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p>    
+                </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>Aucune session</p>
-    {% endif %}
-</div>
+        {% else %}
+            <p>Aucune session</p>
+        {% endif %}
+    </div>
 {% endblock %}

@@ -44,12 +44,14 @@ class StagiaireType extends AbstractType
             ])
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone',
+                'required' => false,
                 "attr" => [
                     'class' => "form"
                 ]
             ])
             ->add('ville', TextType::class, [
                 'label' => 'Ville',
+                'required' => false,
                 "attr" => [
                     'class' => "form"
                 ]
