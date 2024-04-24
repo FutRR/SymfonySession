@@ -8,12 +8,10 @@
     {% for formation in formations %}
     <div class="list formation">
         <a href="{{ path('show_formation', {'id': formation.id}) }}">
-        <p>{{ formation.titreFormation }}</p>
-        <ul>
-            {% for session in formation.sessions %}
-                <li>{{ session.nomSession }}</li>
-            {% endfor %}
-        </ul>
+            <h3>{{ formation.titreFormation }}</h3>
+                {% for session in formation.sessions %}
+                    {{ session.nomSession }}{% if not loop.last %} - {% endif %}
+                {% endfor %}
         </a>
     </div> 
     {% endfor %}

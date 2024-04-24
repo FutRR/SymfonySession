@@ -3,7 +3,7 @@
 {% block title %}{{ stagiaire }}{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="stagiaire">
 
     <h1>Fiche Stagiaire</h1>
 
@@ -16,13 +16,13 @@
 
 </div>
 
-<div class="container">
+<div class="stagiaire-session">
 
     <h2>Sessions prévues :</h2>
     {% if stagiaire.sessions | length > 0 %}
         <ul>
             {% for session in stagiaire.sessions %}
-                <li><p>{{ session }} (du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p></li>
+                <li><p><a href="{{ path('show_session', {'id': session.id }) }}">{{ session }}</a> (du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p></li>
             {% endfor %}
         </ul>
     {% else %}
