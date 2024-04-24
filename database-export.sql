@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.categorie : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.categorie : ~4 rows (environ)
 INSERT IGNORE INTO `categorie` (`id`, `nom_categorie`) VALUES
 	(1, 'Back-End'),
 	(2, 'Front-End'),
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formation : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formation : ~2 rows (environ)
 INSERT IGNORE INTO `formation` (`id`, `titre_formation`) VALUES
 	(1, 'Développement Web'),
 	(2, 'Bureautique'),
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `programme` (
   CONSTRAINT `FK_3DDCB9FFEC4A74AB` FOREIGN KEY (`unite_id`) REFERENCES `unite` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.programme : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.programme : ~2 rows (environ)
 INSERT IGNORE INTO `programme` (`id`, `session_id`, `unite_id`, `nb_jours`) VALUES
 	(1, 1, 1, 8),
 	(2, 1, 2, 2);
@@ -111,12 +111,10 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.session : ~4 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.session : ~2 rows (environ)
 INSERT IGNORE INTO `session` (`id`, `formation_id`, `formateur_id`, `nom_session`, `date_debut`, `date_fin`, `nb_places`, `description`) VALUES
 	(1, 1, 1, 'Initiation PHP', '2024-05-06 08:30:00', '2024-05-17 17:00:00', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
-	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
-	(3, 1, 1, 'test', '2024-04-23 11:49:20', '2024-04-23 11:49:22', 2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
-	(4, 2, 1, 'test 2 buro', '2024-04-23 11:57:41', '2024-04-23 11:57:42', 3, NULL);
+	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.');
 
 -- Listage de la structure de table symfonysessionfutterer. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -159,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `unite` (
   CONSTRAINT `FK_unite_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.unite : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.unite : ~10 rows (environ)
 INSERT IGNORE INTO `unite` (`id`, `nom_unite`, `categorie_id`) VALUES
 	(1, 'PHP', 1),
 	(2, 'SQL', 1),
