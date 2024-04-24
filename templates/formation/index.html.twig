@@ -3,7 +3,10 @@
 {% block title %}Liste des formations{% endblock %}
 
 {% block body %}
-<h1>Liste des formations</h1>
+<div class="titre">
+    <h1>Liste des formations</h1>
+    <a class="btn" href="{{ path('new_formation')}}">Ajout</a>
+</div>
 
     {% for formation in formations %}
     <div class="list formation">

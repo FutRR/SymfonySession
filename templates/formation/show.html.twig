@@ -3,7 +3,10 @@
 {% block title %}{{ formation.titreFormation }}{% endblock %}
 
 {% block body %}
-<h1>{{ formation.titreFormation }}</h1>
+<div class="titre">
+    <h1>{{ formation.titreFormation }}</h1>
+    <a class="btn" href="{{ path('edit_formation', {'id': formation.id}) }}">Modifier</a>
+</div>
 
 <h2>Sessions</h2>
 
