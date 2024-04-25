@@ -8,7 +8,7 @@
     </div>
     <div class="line"></div>
 
-    <div class="stagiaire">
+    <div class="fiche">
         <h3>{{ stagiaire }}</h3>
         <p>Date de naissance : {{ stagiaire.dateNaissanceFr }} - {{ stagiaire.age }} ans</p>
         {% if stagiaire.ville | length > 0 %}
@@ -20,7 +20,7 @@
         {% endif %}
     </div>
 
-    <div class="stagiaire-sessions">
+    <div class="fiche-sessions">
         <h2>Sessions prévues :</h2>
         <div class="line"></div>
         {% if stagiaire.sessions | length > 0 %}

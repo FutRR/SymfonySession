@@ -22,7 +22,7 @@ USE `symfonysessionfutterer`;
 -- Listage de la structure de table symfonysessionfutterer. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom_categorie` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom_categorie` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -36,9 +36,9 @@ INSERT IGNORE INTO `categorie` (`id`, `nom_categorie`) VALUES
 -- Listage de la structure de table symfonysessionfutterer. formateur
 CREATE TABLE IF NOT EXISTS `formateur` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom_formateur` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prenom_formateur` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_formateur` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom_formateur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prenom_formateur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_formateur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -49,11 +49,11 @@ INSERT IGNORE INTO `formateur` (`id`, `nom_formateur`, `prenom_formateur`, `emai
 -- Listage de la structure de table symfonysessionfutterer. formation
 CREATE TABLE IF NOT EXISTS `formation` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titre_formation` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `titre_formation` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formation : ~3 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formation : ~4 rows (environ)
 INSERT IGNORE INTO `formation` (`id`, `titre_formation`) VALUES
 	(1, 'Développement Web'),
 	(2, 'Bureautique'),
@@ -63,9 +63,9 @@ INSERT IGNORE INTO `formation` (`id`, `titre_formation`) VALUES
 -- Listage de la structure de table symfonysessionfutterer. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `available_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `delivered_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
@@ -100,39 +100,42 @@ CREATE TABLE IF NOT EXISTS `session` (
   `id` int NOT NULL AUTO_INCREMENT,
   `formation_id` int NOT NULL,
   `formateur_id` int NOT NULL,
-  `nom_session` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom_session` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_debut` datetime NOT NULL,
   `date_fin` datetime NOT NULL,
   `nb_places` int NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `IDX_D044D5D45200282E` (`formation_id`),
   KEY `IDX_D044D5D4155D8F51` (`formateur_id`),
   CONSTRAINT `FK_D044D5D4155D8F51` FOREIGN KEY (`formateur_id`) REFERENCES `formateur` (`id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.session : ~2 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.session : ~4 rows (environ)
 INSERT IGNORE INTO `session` (`id`, `formation_id`, `formateur_id`, `nom_session`, `date_debut`, `date_fin`, `nb_places`, `description`) VALUES
 	(1, 1, 1, 'Initiation PHP', '2024-05-06 08:30:00', '2024-05-17 17:00:00', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
-	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.');
+	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
+	(5, 2, 1, 'test', '2024-04-25 08:52:00', '2024-04-25 08:55:00', 1, 'blabla'),
+	(6, 2, 1, 'test 2', '2024-04-25 08:57:00', '2024-04-25 08:59:00', 2, 'bla');
 
 -- Listage de la structure de table symfonysessionfutterer. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom_stagiaire` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prenom_stagiaire` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_stagiaire` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom_stagiaire` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prenom_stagiaire` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_stagiaire` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `date_naissance` date NOT NULL,
-  `telephone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ville` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telephone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ville` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire : ~1 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire : ~3 rows (environ)
 INSERT IGNORE INTO `stagiaire` (`id`, `nom_stagiaire`, `prenom_stagiaire`, `email_stagiaire`, `date_naissance`, `telephone`, `ville`) VALUES
 	(1, 'FUTTERER', 'Maxime', 'futterermaxime@gmail.com', '2000-08-29', '06 52 39 73 60', 'Strasbourg'),
-	(2, 'Test', 'Testeur', 'test@test.test', '1997-08-10', NULL, NULL);
+	(2, 'Test', 'Testeur', 'test@test.test', '1997-08-10', NULL, NULL),
+	(3, 'Fouzi', 'Riyad', 'riyadfouzi@gmail.com', '2001-02-21', NULL, 'Montbéliard');
 
 -- Listage de la structure de table symfonysessionfutterer. stagiaire_session
 CREATE TABLE IF NOT EXISTS `stagiaire_session` (
@@ -152,7 +155,7 @@ INSERT IGNORE INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 -- Listage de la structure de table symfonysessionfutterer. unite
 CREATE TABLE IF NOT EXISTS `unite` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom_unite` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom_unite` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `categorie_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_1D64C118BCF5E72D` (`categorie_id`),
@@ -175,10 +178,10 @@ INSERT IGNORE INTO `unite` (`id`, `nom_unite`, `categorie_id`) VALUES
 -- Listage de la structure de table symfonysessionfutterer. user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email_utilisateur` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_utilisateur` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_IDENTIFIER_EMAIL_UTILISATEUR` (`email_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -10,7 +10,9 @@
 <div class="line"></div>
 
 <section id="session-info">
-    <h2>Informations :</h2>
+    <div class="sous-titre">
+        <h2>Informations :</h2>
+    </div>
     <p>Encadré par {{ session.formateur }}</p>
     {% if session.description | length > 0 %}
         <p>{{ session.description }}</p>
@@ -20,7 +22,9 @@
 </section>
 
 <section id="modules">
-    <h2>Modules :</h2>
+    <div class="sous-titre">
+        <h2>Modules :</h2>
+    </div>
 
     {% if session.programmes | length > 0 %}
 
@@ -50,12 +54,14 @@
 </section>
 
 <section id="session-stagiaires">
-    <h2>Stagiaires Inscrits</h2>
+    <div class="sous-titre">
+        <h2>Stagiaires inscrits :</h2>
+        <a id="toggle-stagiaire" class="btn" href="">Ajouter</a>
+    </div>
     {% for stagiaire in session.stagiaires %}
         {{ stagiaire }}
     {% endfor %}
 
-    <a id="toggle-stagiaire" class="btn" href="">Ajouter</a>
 
 </section>
 
