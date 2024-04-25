@@ -1,5 +1,5 @@
 :root{
-    --primary: #1b9988;
+    --primary: #FF9900;
     --black: #000;
     --white: #f6f6f6;
 }
@@ -72,7 +72,7 @@ body{
 }
 
 .active{
-    color: var(--primary) !important;
+    color: var(--white) !important;
     font-weight: 500;
 }
 
@@ -150,12 +150,13 @@ main{
     text-decoration: none;
     border-radius: 15px;
     color: #000;
-    transition: 400ms ease;
+    transition: all 400ms ease;
     border: 3px solid var(--primary);
 }
 
 .btn:hover{
-    transform: scale(1.1)
+    background-color: var(--primary);
+    font-weight: 500;
 }
 
 
