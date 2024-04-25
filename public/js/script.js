@@ -3,11 +3,12 @@ function menuChange(x) {
 }
 
 const menuburger = document.querySelector(".menuburger");
-const navlinks = document.querySelectorAll("ul.nav-links");
+const navlinks = document.querySelector(".links");
+const main = document.querySelector("main");
+const logo = document.querySelector(".logo");
 
 menuburger.addEventListener("click", () => {
-  console.log(navlinks);
-  navlinks.forEach((navlink) => {
-    navlink.classList.toggle("mobile-menu");
-  });
+  navlinks.classList.toggle("mobile-menu");
+  main.classList.toggle("blur");
+  logo.classList.toggle("blur");
 });

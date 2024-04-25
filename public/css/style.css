@@ -1,14 +1,21 @@
+:root{
+    --primary: #1b9988;
+    --black: #000;
+    --white: #f6f6f6;
+}
+
 *{
     scroll-behavior: smooth;
 }
 
 body{
     font-family: "League Spartan", sans-serif;
-    background-color: #f6f6f6;
+    background-color: var(--white);
+    min-height: 100vh;
 }
 
 .orange{
-    color: #FF9900 !important;
+    color: var(--primary) !important;
 }
 
 /* NAVIGATION BAR */
@@ -19,6 +26,11 @@ body{
     align-items: center;
     max-width: 100%;
     min-width: fit-content;
+}
+
+.links{
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .nav-links{
@@ -52,14 +64,15 @@ body{
     font-size: 40px;
     font-weight: 900;
     text-decoration: none !important;
+    transition: 400ms ease;
 }
 
 .logo span{
-    color: #FF9900;
+    color: var(--primary);
 }
 
 .active{
-    color: #FF9900 !important;
+    color: var(--primary) !important;
     font-weight: 500;
 }
 
@@ -79,6 +92,7 @@ body{
 .change .bar1{
     transform: translate(0, 10px) rotate(-45deg);
 }
+
 .change .bar2 {
     opacity: 0;
 }
@@ -97,6 +111,8 @@ main{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: fit-content;
+    transition: 400ms ease;
 }
 
 .titre{
@@ -135,7 +151,7 @@ main{
     border-radius: 15px;
     color: #000;
     transition: 400ms ease;
-    border: 3px solid #FF9900;
+    border: 3px solid var(--primary);
 }
 
 .btn:hover{
@@ -153,7 +169,7 @@ main{
 
 
 .submit{
-    border: 3px solid #FF9900;
+    border: 3px solid var(--primary);
     border-radius: 15px;
 }
 
@@ -164,6 +180,7 @@ main{
         flex-direction: column;
         align-items: center;
         width: 100%;
+        min-width: fit-content;
     }
 
     #prochainement h2{
@@ -181,6 +198,7 @@ main{
 
     .dashboard-sessions{
         display: flex;
+        justify-content: center;
         max-width: 100%;
     }
 
@@ -188,7 +206,7 @@ main{
         max-width: 500px;
         width: fit-content;
         height: auto;
-        border: 3px solid #FF9900;
+        border: 3px solid var(--primary);
         border-radius: 15px;
         padding: 8px 10px;
         margin: 20px;
@@ -224,7 +242,7 @@ main{
         align-self: stretch;
         min-width: 5px;
         width: 5px;
-        background-color: #FF9900;
+        background-color: var(--primary);
         border-radius: 15px;
     }
 
@@ -264,7 +282,7 @@ main{
         border: 1px solid #000;
         text-align: left;
         padding: 8px;
-        color: #FF9900;
+        color: var(--primary);
     }
 
     td{
@@ -276,7 +294,7 @@ main{
     /* LISTS */
 
     .list{
-        border: 2px solid #FF9900;
+        border: 2px solid var(--primary);
         border-radius: 15px;
         min-width: 30vw;
         width: fit-content;
@@ -364,28 +382,33 @@ main{
 }
 
 .back-to-top a{
-    color: #FF9900;
+    color: var(--primary);
 }
 
 
 .back-to-top a:visited{
-    color: #FF9900;
+    color: var(--primary);
 }
 
 
 .back-to-top:hover a{
-    color: #FF9900;
+    color: var(--primary);
 }
 
 .back-to-top:hover a:visited{
-    color: #FF9900;
+    color: var(--primary);
 }
 
 .back-to-top:hover i{
-    color: #FF9900;
+    color: var(--primary);
 }
 
-@media screen and (max-width: 900px){
+.blur{
+    filter: blur(4px);
+}
+
+
+@media screen and (max-width: 1200px){
 
     .menuburger{
         position: fixed;
@@ -395,20 +418,36 @@ main{
         margin: 10px;
     }
 
-    #nav{
+    .links{
+        z-index: 4;
+        position: fixed;
+        height: 100vh;
+        width: 40vw;
+        background-color: var(--primary);
+        top: 0;
+        right: 0;
+        display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        align-items: center;
+        transition: 400ms;
+        margin-right: -500px;
     }
 
     .nav-links{
-        position: fixed;
+        z-index: 5;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 500ms;
-        margin-right: -500px;
+        gap: 50px;
+    }
 
+    .nav-links a{
+        font-size: 40px;
+
+    }
+
+    .nav-links .orange{
+        color: #fff !important;
     }
 
     .mobile-menu{

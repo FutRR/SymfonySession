@@ -21,17 +21,19 @@
             <nav id="navbar">
                 <a class="logo" href="{{ path('app_dashboard')}}"><span class="orange">Elan</span>Session</a>
 
-                <ul class="nav-links">
-                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formation' %}active{% endif %}" href="{{ path('app_formation')}}">Formations</a></li>
-                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_stagiaire' %}active{% endif %}" href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
-                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formateur' %}active{% endif %}" href="{{ path('app_formateur')}}">Formateurs</a></li>
-                    <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_categorie' %}active{% endif %}" href="{{ path('app_categorie')}}">Catégories</a></li>
-                </ul>
+                <div class="links">
+                    <ul class="nav-links">
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formation' %}active{% endif %}" href="{{ path('app_formation')}}">Formations</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_stagiaire' %}active{% endif %}" href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formateur' %}active{% endif %}" href="{{ path('app_formateur')}}">Formateurs</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_categorie' %}active{% endif %}" href="{{ path('app_categorie')}}">Catégories</a></li>
+                    </ul>
 
-                <ul class="nav-links">
-                    <li class="nav-link"><a class="orange" href="">Inscription</a></li>
-                    <li class="nav-link"><a href="">Connexion</a></li>
-                </ul>
+                    <ul class="nav-links">
+                        <li class="nav-link"><a class="orange" href="">Inscription</a></li>
+                        <li class="nav-link"><a href="">Connexion</a></li>
+                    </ul>
+                </div>
 
                 <div class="menuburger" onclick="menuChange(this)">
                     <div class="bar1"></div>
