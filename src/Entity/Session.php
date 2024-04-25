@@ -91,6 +91,12 @@ class Session
         return $this->dateDebut->format("d/m/Y");
     }
 
+    public function getHeureDebutFr(): ?string
+    {
+        return $this->dateDebut->format("H:i");
+    }
+
+
     public function getDateFin(): ?\DateTimeInterface
     {
         return $this->dateFin;
@@ -107,6 +113,12 @@ class Session
     {
         return $this->dateFin->format("d/m/Y");
     }
+
+    public function getHeureFinFr(): ?string
+    {
+        return $this->dateFin->format("H:i");
+    }
+
 
     public function getNbPlaces(): ?int
     {

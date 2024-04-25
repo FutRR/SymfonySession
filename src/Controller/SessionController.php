@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Session;
+use App\Form\SessionType;
 use App\Repository\UniteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,26 +23,41 @@ class SessionController extends AbstractController
         ]);
     }
 
-    #[Route('/session/{id}', name: 'show_session')]
-    public function show(Session $session, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/session/new', name: 'new_session')]
+    #[Route('/session/{id}/edit', name: 'edit_session')]
+    public function new_edit(Session $session = null, Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createFormBuilder($session)
-            ->add('stagiaires', ChoiceType::class)
-            ->add('valider', SubmitType::class);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $stagiaire = $form->getData();
-            $entityManager->persist($stagiaire);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('show_session');
+        if (!$session) {
+            $session = new Session();
         }
 
+        $form = $this->createForm(SessionType::class, $session);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $session = $form->getData();
+            $entityManager->persist($session);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+        }
+
+        return $this->render("session/new.html.twig", [
+            'formAddSession' => $form,
+            'edit' => $session->getId()
+        ]);
+
+    }
+
+
+
+    #[Route('/session/{id}', name: 'show_session')]
+    public function show(Session $session): Response
+    {
         return $this->render("session/show.html.twig", [
             'session' => $session,
-            'formAddStagiaireSession' => $form
         ]);
     }
 

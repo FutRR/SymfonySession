@@ -8,9 +8,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class StagiaireType extends AbstractType
 {
@@ -19,46 +19,49 @@ class StagiaireType extends AbstractType
         $builder
             ->add('nomStagiaire', TextType::class, [
                 'label' => 'Nom : ',
-                "attr" => [
-                    'class' => "form"
+                'attr' => [
+                    'class' => 'form'
                 ]
             ])
             ->add('prenomStagiaire', TextType::class, [
                 'label' => 'Prenom : ',
-                "attr" => [
-                    'class' => "form"
+                'attr' => [
+                    'class' => 'form'
                 ]
             ])
             ->add('emailStagiaire', TextType::class, [
                 'label' => 'Email : ',
-                "attr" => [
-                    'class' => "form"
+                'attr' => [
+                    'class' => 'form'
                 ]
             ])
-            ->add('dateNaissance', BirthdayType::class, [
+            ->add('dateNaissance', DateType::class, [
                 'label' => 'Date de naissance :',
-                "attr" => [
-                    'class' => "form date"
-                ],
-                'format' => 'dd-MM-yyyy'
+                'label_attr' => ['class' => 'label'],
+                'years' => range(1950, date("Y")),
+                'data' => new \DateTime(),
+                'format' => 'dd MM yyyy',
+                'attr' => [
+                    'class' => 'form date'
+                ]
             ])
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone',
                 'required' => false,
-                "attr" => [
-                    'class' => "form"
+                'attr' => [
+                    'class' => 'form'
                 ]
             ])
             ->add('ville', TextType::class, [
                 'label' => 'Ville',
                 'required' => false,
-                "attr" => [
-                    'class' => "form"
+                'attr' => [
+                    'class' => 'form'
                 ]
             ])
             ->add('valider', SubmitType::class, [
-                "attr" => [
-                    'class' => "submit btn"
+                'attr' => [
+                    'class' => 'submit btn'
                 ]
             ])
 

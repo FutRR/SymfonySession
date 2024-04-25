@@ -5,6 +5,7 @@
 {% block body %}
 <div class="titre">
 <h1>{{ session }}</h1>
+<a class="btn" href="{{ path('edit_session', {'id': session.id}) }}">Modifier</a>
 </div>
 <div class="line"></div>
 
@@ -14,7 +15,7 @@
     {% if session.description | length > 0 %}
         <p>{{ session.description }}</p>
     {% endif %}
-    <p>Du {{ session.dateDebutFr }} au {{ session.dateFinFr }}</p>
+    <p>Du {{ session.dateDebutFr }} à {{ session.heureDebutFr }} </p><p> Au {{ session.dateFinFr }} à {{ session.heureFinFr }}</p>
     <p>Nombre de places : {{ session.nbPlaces }}</p>
 </section>
 
@@ -55,7 +56,6 @@
     {% endfor %}
 
     <a id="toggle-stagiaire" class="btn" href="">Ajouter</a>
-    {{ form(formAddStagiaireSession) }}
 
 </section>
 

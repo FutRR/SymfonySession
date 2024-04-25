@@ -99,22 +99,15 @@ main{
     transform: scale(1.1)
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-}
 
 .form{
+    display: flex;
+    flex-direction: column;
     padding: 8px;
     margin: 10px;
-    width: 60%;
-    transition: all 400ms ease;
-
+    width: fit-content;
 }
 
-/* .form:focus{
-    width: 150%;
-} */
 
 .submit{
     border: 3px solid #FF9900;
@@ -274,7 +267,7 @@ form{
     }
 
     .list:hover{
-        transform: scale(0.5);
+        transform: scale(1.05);
     }
 
 
