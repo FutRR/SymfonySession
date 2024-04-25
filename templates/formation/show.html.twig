@@ -9,9 +9,10 @@
 </div>
 <div class="line"></div>
 
-<h2>Sessions</h2>
-<a class="btn" href="{{ path('new_session')}}">Ajouter une session</a>
-
+<div class="sous-titre">
+    <h2>Sessions</h2>
+    <a class="btn" href="{{ path('new_session')}}">Ajouter une session</a>
+</div>
 
 {% if formation.sessions | length > 0 %}
 

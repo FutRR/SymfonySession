@@ -1,32 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ stagiaire }}{% endblock %}
+{% block title %}{{ formateur }}{% endblock %}
 
 {% block body %}
-<div class="container">
+    <div class="titre">
+        <h2>Fiche Formateur</h2>
+    </div>
+    <div class="line"></div>
 
-    <h1>Fiche Stagiaire</h1>
+    <div class="fiche">
+        <h3>{{ formateur }}</h3>
+        <p> {{ formateur.emailFormateur }} </p>
+    </div>
 
-    <h2>À Propos</h2>
-    <h3>{{ stagiaire }}</h3>
-    <p>Date de naissance : {{ stagiaire.dateNaissanceFr }} - {{ stagiaire.age }} ans</p>
-    <p>Ville : {{ stagiaire.ville }}</p>
-    <p>Email : {{ stagiaire.emailStagiaire }}</p>
-    <p>Téléphone : {{ stagiaire.telephone }}</p>
-
-</div>
-
-<div class="container">
-
-    <h2>Sessions prévues :</h2>
-    {% if formation.sessions | length > 0 %}
-
-        {% for session in stagiaire.session %}
-            <p>{{ session }}</p>
-        {% endfor %}
-
-    {% else %}
-        <p>Aucune session</p>
-    {% endif %}
-</div>
+    <div class="fiche-sessions">
+        <h2>Sessions prévues :</h2>
+        <div class="line"></div>
+        {% if formateur.sessions | length > 0 %}
+            {% for session in formateur.sessions %}
+                <div class="formateur-session list">
+                    <h3><a href="{{ path('show_session', {'id': session.id }) }}">{{ session }}</a></h3> 
+                    <p>(du {{ session.dateDebutFr }} au {{ session.dateFinFr }})</p>    
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucune session</p>
+        {% endif %}
+    </div>
 {% endblock %}
