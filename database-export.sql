@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `formateur` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formateur : ~1 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formateur : ~0 rows (environ)
 INSERT IGNORE INTO `formateur` (`id`, `nom_formateur`, `prenom_formateur`, `email_formateur`) VALUES
 	(1, 'MURMANN', 'Mickael', 'exemple@test.fr');
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.session : ~4 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.session : ~2 rows (environ)
 INSERT IGNORE INTO `session` (`id`, `formation_id`, `formateur_id`, `nom_session`, `date_debut`, `date_fin`, `nb_places`, `description`) VALUES
 	(1, 1, 1, 'Initiation PHP', '2024-05-06 08:30:00', '2024-05-17 17:00:00', 10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
 	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire : ~3 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire : ~0 rows (environ)
 INSERT IGNORE INTO `stagiaire` (`id`, `nom_stagiaire`, `prenom_stagiaire`, `email_stagiaire`, `date_naissance`, `telephone`, `ville`) VALUES
 	(1, 'FUTTERER', 'Maxime', 'futterermaxime@gmail.com', '2000-08-29', '06 52 39 73 60', 'Strasbourg'),
 	(2, 'Test', 'Testeur', 'test@test.test', '1997-08-10', NULL, NULL),
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~1 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~0 rows (environ)
 INSERT IGNORE INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 2);
 
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `unite` (
   CONSTRAINT `FK_unite_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.unite : ~10 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.unite : ~0 rows (environ)
 INSERT IGNORE INTO `unite` (`id`, `nom_unite`, `categorie_id`) VALUES
 	(1, 'PHP', 1),
 	(2, 'SQL', 1),
@@ -181,12 +181,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email_utilisateur` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_IDENTIFIER_EMAIL_UTILISATEUR` (`email_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysessionfutterer.user : ~0 rows (environ)
+INSERT IGNORE INTO `user` (`id`, `email_utilisateur`, `roles`, `password`) VALUES
+	(1, 'exemple@exemple.com', '["ROLE_ADMIN"]', '$2y$13$KWFqs9veYinG4y7j5p.ZneOVMrFuI2GAOBASFs5VCankUdKRo2tey');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
