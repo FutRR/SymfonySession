@@ -2,16 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Unite;
 use App\Entity\Session;
+use App\Entity\Programme;
 use App\Form\SessionType;
 use App\Repository\SessionRepository;
-use App\Repository\UniteRepository;
+use App\Repository\ProgrammeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SessionController extends AbstractController
@@ -62,9 +66,36 @@ class SessionController extends AbstractController
 
 
     #[Route('/session/{id}', name: 'show_session')]
-    public function show(Session $session): Response
+    public function show(Session $session, Programme $programme, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $programme->setSession($session);
+
+        $moduleForm = $this->createFormBuilder($programme)
+            ->add('unite', EntityType::class, [
+                'class' => Unite::class,
+                'choice_label' => 'nomUnite',
+                'attr' => ['class' => 'form'],
+                'label' => 'Unité'
+            ])
+            ->add('nbJours', IntegerType::class, [
+                'attr' => ['class' => 'form'],
+                'label' => 'Nombre de jours'
+            ])
+            ->add('ajouter', SubmitType::class, [
+                'attr' => ['class' => 'btn submit']
+            ])->getForm();
+
+        $moduleForm->handleRequest($request);
+        if ($moduleForm->isSubmitted() && $moduleForm->isValid()) {
+            $programme = $moduleForm->getData();
+            $entityManager->persist($session);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+        }
+
         return $this->render("session/show.html.twig", [
+            'moduleForm' => $moduleForm,
             'session' => $session,
         ]);
     }

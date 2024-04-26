@@ -24,7 +24,12 @@
 <section id="modules">
     <div class="sous-titre">
         <h2>Modules :</h2>
+        <button id="toggle-module" class="btn">Ajouter un module</button>
     </div>
+    <div id="module-form" class="form-toggle">
+        {{ form(moduleForm) }}
+    </div>
+
 
     {% if session.programmes | length > 0 %}
 
@@ -56,7 +61,7 @@
 <section id="session-stagiaires">
     <div class="sous-titre">
         <h2>Stagiaires inscrits :</h2>
-        <a id="toggle-stagiaire" class="btn" href="">Ajouter</a>
+        <a id="toggle-stagiaire" class="btn" href="">Ajouter un stagiaire</a>
     </div>
 
     {% if session.stagiaires | length > 0 %}

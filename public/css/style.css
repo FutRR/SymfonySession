@@ -152,6 +152,7 @@ main{
     color: #000;
     transition: all 400ms ease;
     border: 3px solid var(--primary);
+    cursor: pointer;
 }
 
 .btn:hover{
@@ -172,6 +173,10 @@ main{
 .submit{
     border: 3px solid var(--primary);
     border-radius: 15px;
+}
+
+.form-toggle{
+    display: none !important;
 }
 
     /* DASHBOARD PAGE */

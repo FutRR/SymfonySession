@@ -4,8 +4,6 @@ const main = document.querySelector("main");
 const logo = document.querySelector(".logo");
 
 function menuChange(x) {
-  console.log(x);
-
   x.classList.toggle("change");
   navlinks.classList.toggle("mobile-menu");
   main.classList.toggle("blur");
@@ -17,3 +15,10 @@ function menuChange(x) {
 //   main.classList.toggle("blur");
 //   logo.classList.toggle("blur");
 // });
+
+const moduleToggle = document.querySelector("#toggle-module");
+const moduleForm = document.querySelector("#module-form");
+
+moduleToggle.addEventListener("click", () => {
+  moduleForm.classList.toggle("form-toggle");
+});
