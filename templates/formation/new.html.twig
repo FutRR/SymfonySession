@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une formation{% endblock %}
+{% block title %}{% if edit %}
+Editer une formation
+{% else %}
+Ajouter une formation
+{% endif %}
+{% endblock %}
 
 {% block body %}
     {% if edit %}

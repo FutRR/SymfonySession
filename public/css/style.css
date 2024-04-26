@@ -72,7 +72,7 @@ body{
 }
 
 .active{
-    color: var(--white) !important;
+    color: var(--primary) !important;
     font-weight: 500;
 }
 

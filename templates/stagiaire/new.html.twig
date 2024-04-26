@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une formation{% endblock %}
+{% block title %}
+{% if edit %}
+Editer un stagiaire
+{% else %}
+Ajouter un stagiaire
+{% endif %}
+
+{% endblock %}
 
 {% block body %}
     {% if edit %}
-    <h1>Editer une formation</h1>
+    <h1>Editer un stagiaire</h1>
     <div class="line"></div>
 
     {% else %}
-    <h1>Ajouter une formation</h1>
+    <h1>Ajouter un stagiaire</h1>
     <div class="line"></div>
 
     {% endif %}
