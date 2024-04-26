@@ -64,6 +64,26 @@ class SessionController extends AbstractController
 
     }
 
+    #[Route('/session/{id}/delete', name: 'delete_session')]
+    public function delete(Session $session, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($session);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_session');
+    }
+
+    #[Route('/session/{id}/deleteStagiaire', name: 'deleteStagiaire_session')]
+    public function deleteStagiaire(Session $session, SessionRepository $sessionRepository, EntityManagerInterface $entityManager): Response
+    {
+        $query = $sessionRepository->createQueryBuilder('s')
+            ->delete('stagiaire stagiaire')
+            ->where('s.id < :id')
+            ->setParameter('id', $session->getId())
+            ->getQuery();
+        $query->execute();
+
+        return $this->redirectToRoute('app_session');
+    }
 
 
     #[Route('/session/{id}', name: 'show_session')]
