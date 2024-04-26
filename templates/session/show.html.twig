@@ -10,15 +10,15 @@
 <div class="line"></div>
 
 <section id="session-info">
-    <div class="sous-titre">
-        <h2>Informations :</h2>
+    <div class="fiche">
+        <h3>Informations :</h3>
+        <p>Encadré par {{ session.formateur }}</p>
+        {% if session.description | length > 0 %}
+            <p>{{ session.description }}</p>
+        {% endif %}
+        <p>Du {{ session.dateDebutFr }} à {{ session.heureDebutFr }} </p><p> Au {{ session.dateFinFr }} à {{ session.heureFinFr }}</p>
+        <p>Nombre de places : {{ session.nbPlaces }}</p>
     </div>
-    <p>Encadré par {{ session.formateur }}</p>
-    {% if session.description | length > 0 %}
-        <p>{{ session.description }}</p>
-    {% endif %}
-    <p>Du {{ session.dateDebutFr }} à {{ session.heureDebutFr }} </p><p> Au {{ session.dateFinFr }} à {{ session.heureFinFr }}</p>
-    <p>Nombre de places : {{ session.nbPlaces }}</p>
 </section>
 
 <section id="modules">
@@ -28,7 +28,7 @@
 
     {% if session.programmes | length > 0 %}
 
-        <table class="table table-bordered table-striped table-hover">
+        <table>
             <thead>
                 <tr>
                     <th>Module</th>
@@ -58,9 +58,32 @@
         <h2>Stagiaires inscrits :</h2>
         <a id="toggle-stagiaire" class="btn" href="">Ajouter</a>
     </div>
-    {% for stagiaire in session.stagiaires %}
-        {{ stagiaire }}
-    {% endfor %}
+
+    {% if session.stagiaires | length > 0 %}
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Stagiaire</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for stagiaire in session.stagiaires %}
+            <tr>
+                <td>{{ stagiaire }}</td>
+                <td>{{ stagiaire.emailStagiaire }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% else %}
+    <p>Aucun stagiaires inscrits</p>
+{% endif %}
+
 
 
 </section>
