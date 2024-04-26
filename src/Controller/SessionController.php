@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Session;
 use App\Form\SessionType;
+use App\Repository\SessionRepository;
 use App\Repository\UniteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +17,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SessionController extends AbstractController
 {
     #[Route('/session', name: 'app_session')]
-    public function index(): Response
+    public function index(SessionRepository $sessionRepository): Response
     {
+        $sessionsDevWeb = $sessionRepository->findBy(['Formation' => '1']);
+        $sessionsBureautique = $sessionRepository->findBy(['Formation' => '2']);
+        $sessionsCommerce = $sessionRepository->findBy(['Formation' => '3']);
+        $sessionsEsthetique = $sessionRepository->findBy(['Formation' => '4']);
         return $this->render('session/index.html.twig', [
-            'controller_name' => 'SessionController',
+            'sessionsDevWeb' => $sessionsDevWeb,
+            'sessionsBureautique' => $sessionsBureautique,
+            'sessionsCommerce' => $sessionsCommerce,
+            'sessionsEsthetique' => $sessionsEsthetique,
         ]);
     }
 

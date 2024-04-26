@@ -1,6 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SessionController!{% endblock %}
+{% block title %}Liste de sessions{% endblock %}
 
 {% block body %}
+
+<div class="titre">
+    <h1>Sessions</h1>
+</div>
+<div class="line"></div>
+
+    {% if sessionsDevWeb | length > 0 %}
+        <div class="sous-titre">
+            <h2>Développement Web</h2>
+        </div>
+        {% for session in sessionsDevWeb %}
+            <div class="list session">
+                <a href="{{ path('show_session', {'id': session.id}) }}">
+                    <h3>{{ session.nomSession }}</h3>
+                        {% for programme in session.programmes %}
+                            {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
+                        {% endfor %}
+                </a>
+            </div>     
+        {% endfor %}
+    {% endif %}
+
+    {% if sessionsBureautique | length > 0 %}
+            <div class="sous-titre">
+                <h2>Bureautique</h2>
+            </div>
+        {% for session in sessionsBureautique %}
+            <div class="list session">
+                <a href="{{ path('show_session', {'id': session.id}) }}">
+                    <h3>{{ session.nomSession }}</h3>
+                        {% for programme in session.programmes %}
+                            {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
+                        {% endfor %}
+                </a>
+            </div>     
+        {% endfor %}
+    {% endif %}
+
+{% if sessionsCommerce | length > 0 %}
+            <div class="sous-titre">
+                <h2>Commerce</h2>
+            </div>
+    {% for session in sessionsCommerce %}
+        <div class="list session">
+            <a href="{{ path('show_session', {'id': session.id}) }}">
+                <h3>{{ session.nomSession }}</h3>
+                    {% for programme in session.programmes %}
+                        {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
+                    {% endfor %}
+        </a>
+    </div>     
+{% endfor %}
+{% endif %}
+
+{% if sessionsEsthetique | length > 0 %}
+    <div class="sous-titre">
+        <h2>Esthétique</h2>
+    </div>
+    {% for session in sessionsEsthetique %}
+        <div class="list session">
+            <a href="{{ path('show_session', {'id': session.id}) }}">
+                <h3>{{ session.nomSession }}</h3>
+                    {% for programme in session.programmes %}
+                        {{ programme.unite.nomUnite }} | {{ programme.nbJours }}{% if not loop.last %} - {% endif %}
+                    {% endfor %}
+        </a>
+    </div>     
+{% endfor %}
+{% endif %}
+
+
 {% endblock %}
