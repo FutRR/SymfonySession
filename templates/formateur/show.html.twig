@@ -5,6 +5,9 @@
 {% block body %}
     <div class="titre">
         <h2>Fiche Formateur</h2>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn" href="{{ path('edit_formateur', {'id': formateur.id}) }}">Modifier</a>
+        {% endif %}
     </div>
     <div class="line"></div>
 

@@ -5,13 +5,18 @@
 {% block body %}
 <div class="titre">
     <h1>{{ formation.titreFormation }}</h1>
-    <a class="btn" href="{{ path('edit_formation', {'id': formation.id}) }}">Modifier</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn" href="{{ path('edit_formation', {'id': formation.id}) }}">Modifier</a>
+    {% endif %}
 </div>
 <div class="line"></div>
 
 <div class="sous-titre">
     <h2>Sessions</h2>
-    <a class="btn" href="{{ path('new_session')}}">Ajouter une session</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn" href="{{ path('new_session')}}">Ajouter une session</a>
+    {% endif %}
+
 </div>
 
 {% if formation.sessions | length > 0 %}
