@@ -4,13 +4,36 @@
 
 {% block body %}
 
+
+<section id="en-cours">
+    <h2>En Cours</h2>
+    <div class="line"></div>
+
+    <div class="dashboard-sessions">
+        <div class="line-2"></div>
+        {% for session in sessionsEnCours %}
+            <div class="dashboard-session">
+                <h4>{{ session.formation }}</h3>
+                <h3>{{ session }}</h2>
+                <p>{{ session.description }}</p>
+                <p>{{ session.nbPlaces }} places restantes</p>
+                <p>Du {{ session.dateDebutFr }}</p>
+                <p>Au {{ session.dateFinFr }}</p>
+                <a class="orange" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+
 <section id="prochainement">
     <h2>Prochainement</h2>
     <div class="line"></div>
 
     <div class="dashboard-sessions">
         <div class="line-2"></div>
-        {% for session in sessions %}
+        {% for session in sessionsProchaines %}
             <div class="dashboard-session">
                 <h4>{{ session.formation }}</h3>
                 <h3>{{ session }}</h2>
@@ -31,7 +54,7 @@
 
     <div class="wrapper-formations">
         {% for formation in formations %}
-            <div class="list formation">
+            <div class="list dashboard-formation">
                 <a href="{{ path('show_formation', {'id': formation.id}) }}">
                     <h3>{{ formation }}</h3>
                     {% for session in formation.sessions %}
