@@ -33,7 +33,6 @@ class SessionType extends AbstractType
                 'label' => 'Date de début :',
                 'label_attr' => ['class' => 'label'],
                 'years' => range(date("Y"), date("Y") + 5),
-                'data' => new \DateTime(),
                 'format' => 'dd MM yyyy | H:i',
                 'attr' => [
                     'class' => 'form date'
@@ -44,7 +43,6 @@ class SessionType extends AbstractType
                 'label' => 'Date de fin :',
                 'label_attr' => ['class' => 'label'],
                 'years' => range(date("Y"), date("Y") + 5),
-                'data' => new \DateTime(),
                 'format' => 'dd MM yyyy | H:i',
                 'attr' => [
                     'class' => 'form date'
