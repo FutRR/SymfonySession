@@ -9,20 +9,24 @@
     <h2>En Cours</h2>
     <div class="line"></div>
 
-    <div class="dashboard-sessions">
-        <div class="line-2"></div>
-        {% for session in sessionsEnCours %}
-            <div class="dashboard-session">
-                <h4>{{ session.formation }}</h3>
-                <h3>{{ session }}</h2>
-                <p>{{ session.description }}</p>
-                <p>{{ session.nbPlaces }} places restantes</p>
-                <p>Du {{ session.dateDebutFr }}</p>
-                <p>Au {{ session.dateFinFr }}</p>
-                <a class="orange" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
-            </div>
-        {% endfor %}
-    </div>
+    {% if sessionsEnCours | length > 0 %}
+        <div class="dashboard-sessions">
+            <div class="line-2"></div>
+            {% for session in sessionsEnCours %}
+                <div class="dashboard-session">
+                    <h4>{{ session.formation }}</h3>
+                    <h3>{{ session }}</h2>
+                    <p>{{ session.description }}</p>
+                    <p>{{ session.nbPlaces }} places restantes</p>
+                    <p>Du {{ session.dateDebutFr }}</p>
+                    <p>Au {{ session.dateFinFr }}</p>
+                    <a class="orange" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucune session en cours</p>
+    {% endif %}
 
 </section>
 
