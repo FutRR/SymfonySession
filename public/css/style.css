@@ -14,7 +14,7 @@ body{
     min-height: 100vh;
 }
 
-.orange{
+.primary{
     color: var(--primary) !important;
 }
 
@@ -256,7 +256,7 @@ main{
         font-size: 30px;
     }
 
-    .dashboard-session .orange{
+    .dashboard-session .primary{
         margin: 8px 0;
         font-size: 22px;
         font-weight: 500;
@@ -264,7 +264,7 @@ main{
         transition: 400ms ease;
     }
 
-    .dashboard-session .orange:hover{
+    .dashboard-session .primary:hover{
         font-weight: 700;
     }
 
@@ -485,7 +485,7 @@ main{
 
     }
 
-    .nav-links .orange{
+    .nav-links .primary{
         color: #fff !important;
     }
 

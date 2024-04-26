@@ -20,7 +20,7 @@
                     <p>{{ session.nbPlaces }} places restantes</p>
                     <p>Du {{ session.dateDebutFr }}</p>
                     <p>Au {{ session.dateFinFr }}</p>
-                    <a class="orange" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
+                    <a class="primary" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
                 </div>
             {% endfor %}
         </div>
@@ -45,7 +45,7 @@
                 <p>{{ session.nbPlaces }} places restantes</p>
                 <p>Du {{ session.dateDebutFr }}</p>
                 <p>Au {{ session.dateFinFr }}</p>
-                <a class="orange" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
+                <a class="primary" href="{{ path('show_session', {'id': session.id}) }}">En savoir plus</a>
             </div>
         {% endfor %}
     </div>
