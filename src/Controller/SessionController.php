@@ -99,7 +99,7 @@ class SessionController extends AbstractController
         $stagiaireForm = $this->createFormBuilder()
             ->add('stagiaires', EntityType::class, [
                 'class' => Stagiaire::class,
-                'choice_label' => 'nomStagiaire',
+                'choice_label' => 'fullnameStagiaire',
                 'attr' => ['class' => 'form'],
                 'multiple' => false,
                 'expanded' => false,

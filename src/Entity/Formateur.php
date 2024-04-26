@@ -64,6 +64,12 @@ class Formateur
         return $this;
     }
 
+    public function getFullnameFormateur(): ?string
+    {
+        return $this->getNomFormateur() . ' ' . $this->getPrenomFormateur();
+    }
+
+
     public function getEmailFormateur(): ?string
     {
         return $this->emailFormateur;

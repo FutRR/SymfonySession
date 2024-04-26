@@ -74,6 +74,11 @@ class Stagiaire
         return $this;
     }
 
+    public function getFullnameStagiaire(): ?string
+    {
+        return $this->getNomStagiaire() . ' ' . $this->getPrenomStagiaire();
+    }
+
     public function getEmailStagiaire(): ?string
     {
         return $this->emailStagiaire;

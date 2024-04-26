@@ -63,10 +63,18 @@ class SessionType extends AbstractType
             ->add('Formation', EntityType::class, [
                 'class' => Formation::class,
                 'choice_label' => 'titreFormation',
+                'attr' => [
+                    'class' => 'form'
+                ]
+
             ])
             ->add('Formateur', EntityType::class, [
                 'class' => Formateur::class,
-                'choice_label' => 'nomFormateur',
+                'choice_label' => 'fullnameFormateur',
+                'attr' => [
+                    'class' => 'form'
+                ]
+
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
