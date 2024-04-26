@@ -138,6 +138,10 @@ main{
     font-size: 28px;
 }
 
+.btns{
+    display: flex;
+}
+
 .btn{
     display: flex;
     justify-content: center;
@@ -158,6 +162,14 @@ main{
 .btn:hover{
     background-color: var(--primary);
     font-weight: 500;
+}
+
+.delete{
+    border: 3px solid red !important;
+}
+
+.delete:hover{
+    background-color: red !important;
 }
 
 

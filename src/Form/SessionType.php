@@ -81,7 +81,6 @@ class SessionType extends AbstractType
                     'class' => 'submit btn'
                 ]
             ])
-
         ;
     }
 

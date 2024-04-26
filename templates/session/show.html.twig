@@ -5,7 +5,10 @@
 {% block body %}
 <div class="titre">
 <h1>{{ session }}</h1>
-<a class="btn" href="{{ path('edit_session', {'id': session.id}) }}">Modifier</a>
+<div class="btns">
+    <a class="btn" href="{{ path('edit_session', {'id': session.id}) }}">Modifier</a>
+    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
+</div>
 </div>
 <div class="line"></div>
 
@@ -76,14 +79,16 @@
             <tr>
                 <th>Stagiaire</th>
                 <th>Email</th>
+                <th>Désinscrire</th>
             </tr>
         </thead>
 
         <tbody>
         {% for stagiaire in session.stagiaires %}
             <tr>
-                <td>{{ stagiaire }}</td>
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a></td>
                 <td>{{ stagiaire.emailStagiaire }}</td>
+                <td><a class="btn delete" href="{{ path('deleteStagiaire_session', {'id': session.id }) }}">X</a></td>
             </tr>
         {% endfor %}
         </tbody>
