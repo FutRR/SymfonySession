@@ -61,8 +61,12 @@
 <section id="session-stagiaires">
     <div class="sous-titre">
         <h2>Stagiaires inscrits :</h2>
-        <a id="toggle-stagiaire" class="btn" href="">Ajouter un stagiaire</a>
+        <button id="toggle-stagiaire" class="btn">Ajouter un stagiaire</button>
     </div>
+    <div id="stagiaire-form" class="form-toggle">
+        {{ form(stagiaireForm) }}
+    </div>
+
 
     {% if session.stagiaires | length > 0 %}
 

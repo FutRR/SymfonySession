@@ -22,3 +22,10 @@ const moduleForm = document.querySelector("#module-form");
 moduleToggle.addEventListener("click", () => {
   moduleForm.classList.toggle("form-toggle");
 });
+
+const stagiaireToggle = document.querySelector("#toggle-stagiaire");
+const stagiaireForm = document.querySelector("#stagiaire-form");
+
+stagiaireToggle.addEventListener("click", () => {
+  stagiaireForm.classList.toggle("form-toggle");
+});

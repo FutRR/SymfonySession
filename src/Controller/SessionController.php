@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Stagiaire;
 use App\Entity\Unite;
 use App\Entity\Session;
 use App\Entity\Programme;
@@ -68,6 +69,7 @@ class SessionController extends AbstractController
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session, Programme $programme, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $programme = new Programme();
         $programme->setSession($session);
 
         $moduleForm = $this->createFormBuilder($programme)
@@ -88,13 +90,41 @@ class SessionController extends AbstractController
         $moduleForm->handleRequest($request);
         if ($moduleForm->isSubmitted() && $moduleForm->isValid()) {
             $programme = $moduleForm->getData();
+            $entityManager->persist($programme);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+        }
+
+        $stagiaireForm = $this->createFormBuilder()
+            ->add('stagiaires', EntityType::class, [
+                'class' => Stagiaire::class,
+                'choice_label' => 'nomStagiaire',
+                'attr' => ['class' => 'form'],
+                'multiple' => false,
+                'expanded' => false,
+                'label' => 'Stagiaire'
+            ])
+            ->add('ajouter', SubmitType::class, [
+                'attr' => ['class' => 'btn submit']
+            ])->getForm();
+
+        $stagiaireForm->handleRequest($request);
+        if ($stagiaireForm->isSubmitted() && $stagiaireForm->isValid()) {
+            $data = $stagiaireForm->getData();
+            $stagiaire = $data['stagiaires'];
+
+            $session->addStagiaire($stagiaire);
+
             $entityManager->persist($session);
             $entityManager->flush();
 
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }
 
+
         return $this->render("session/show.html.twig", [
+            'stagiaireForm' => $stagiaireForm,
             'moduleForm' => $moduleForm,
             'session' => $session,
         ]);
