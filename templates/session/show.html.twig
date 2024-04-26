@@ -5,10 +5,12 @@
 {% block body %}
 <div class="titre">
 <h1>{{ session }}</h1>
-<div class="btns">
-    <a class="btn" href="{{ path('edit_session', {'id': session.id}) }}">Modifier</a>
-    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
-</div>
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="btns">
+        <a class="btn" href="{{ path('edit_session', {'id': session.id}) }}">Modifier</a>
+        <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
+    </div>
+{% endif %}
 </div>
 <div class="line"></div>
 
@@ -27,7 +29,9 @@
 <section id="modules">
     <div class="sous-titre">
         <h2>Modules :</h2>
-        <button id="toggle-module" class="btn">Ajouter un module</button>
+        {% if is_granted('ROLE_ADMIN') %}
+            <button id="toggle-module" class="btn">Ajouter un module</button>
+        {% endif %}
     </div>
     <div id="module-form" class="form-toggle">
         {{ form(moduleForm) }}
@@ -64,7 +68,9 @@
 <section id="session-stagiaires">
     <div class="sous-titre">
         <h2>Stagiaires inscrits :</h2>
-        <button id="toggle-stagiaire" class="btn">Ajouter un stagiaire</button>
+        {% if is_granted('ROLE_ADMIN') %}
+            <button id="toggle-stagiaire" class="btn">Ajouter un stagiaire</button>
+        {% endif %}
     </div>
     <div id="stagiaire-form" class="form-toggle">
         {{ form(stagiaireForm) }}
@@ -79,7 +85,9 @@
             <tr>
                 <th>Stagiaire</th>
                 <th>Email</th>
-                <th>Désinscrire</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Désinscrire</th>
+                {% endif %}
             </tr>
         </thead>
 
@@ -88,7 +96,9 @@
             <tr>
                 <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a></td>
                 <td>{{ stagiaire.emailStagiaire }}</td>
-                <td><a class="btn delete" href="{{ path('deleteStagiaire_session', {'id': session.id }) }}">X</a></td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td><a class="btn delete" href="{{ path('deleteStagiaire_session', {'id': session.id }) }}">X</a></td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
