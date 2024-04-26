@@ -11,13 +11,14 @@
 </div>
 <div class="line"></div>
 
-<ul>
-    {% for stagiaire in stagiaires %}
-    <li>
-        <a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a>
-    </li> 
-    {% endfor %}
-</ul>
+{% for stagiaire in stagiaires %}
+    <div class="list stagiaire">
+        <a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">
+            <h3>{{ stagiaire }}</h3>
+        </a>
+    </div>
+{% endfor %}
+
 
 
 {% endblock %}

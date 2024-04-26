@@ -3,15 +3,20 @@
 {% block title %}{{ categorie.nomCategorie }}{% endblock %}
 
 {% block body %}
+<div class="titre">
 <h1>{{ categorie.nomCategorie }}</h1>
+</div>
+<div class="line"></div>
 
 <h2>Modules</h2>
 
 {% if categorie.unites | length > 0 %}
 
-    {% for unite in categorie.unites %}
-        <li>{{ unite }}</li>
-    {% endfor %}
+{% for unite in categorie.unites %}
+    <div class="list unite">
+        <h3>{{ unite }}</h3>
+    </div>
+{% endfor %}
 
 {% else %}
     <p>Aucun module</p>

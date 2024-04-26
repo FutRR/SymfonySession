@@ -11,13 +11,13 @@
 </div>
 <div class="line"></div>
 
-<ul>
-    {% for formateur in formateurs %}
-    <li>
-        <a href="{{ path('show_formateur', {'id': formateur.id }) }}">{{ formateur }}</a>
-    </li> 
-    {% endfor %}
-</ul>
+{% for formateur in formateurs %}
+    <div class="list formateur">
+        <a href="{{ path('show_formateur', {'id': formateur.id }) }}">
+            <h3>{{ formateur }}</h3>
+        </a>
+    </div>
+{% endfor %}
 
 
 {% endblock %}
