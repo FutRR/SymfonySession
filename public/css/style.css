@@ -375,6 +375,11 @@ main{
         transform: scale(1.05);
     }
 
+    .session{
+        display: flex;
+        justify-content: space-between;
+    }
+
 
     /* STAGIAIRE */
 

@@ -12,18 +12,24 @@
 </div>
 <div class="line"></div>
 
-    {% if sessionsDevWeb | length > 0 %}
+    {# {% if sessionsDevWeb | length > 0 %}
         <div class="sous-titre">
             <h2>Développement Web</h2>
         </div>
         {% for session in sessionsDevWeb %}
             <div class="list session">
-                <a href="{{ path('show_session', {'id': session.id}) }}">
-                    <h3>{{ session.nomSession }}</h3>
-                        {% for programme in session.programmes %}
-                            {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
-                        {% endfor %}
-                </a>
+                <div class="text">
+                    <a href="{{ path('show_session', {'id': session.id}) }}">
+                        <h3>{{ session.nomSession }}</h3>
+                            {% for programme in session.programmes %}
+                                {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
+                            {% endfor %}
+                    </a>
+                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
+                {% endif %}
+
             </div>     
         {% endfor %}
     {% endif %}
@@ -74,7 +80,36 @@
         </a>
     </div>     
 {% endfor %}
-{% endif %}
+{% endif %} #}
+
+    {% for formation in formations %}
+        
+    <div class="sous-titre">
+        <h2>{{ formation }}</h2>
+    </div>
+    {% if formation.sessions | length > 0 %}
+        {% for session in formation.sessions %}
+            <div class="list session">
+                <div class="text">
+                    <a href="{{ path('show_session', {'id': session.id}) }}">
+                        <h3>{{ session.nomSession }}</h3>
+                            {% for programme in session.programmes %}
+                                {{ programme.unite.nomUnite }} - {{ programme.nbJours }}{% if not loop.last %} | {% endif %}
+                            {% endfor %}
+                    </a>
+                </div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        Aucune sessions
+    {% endif %}
+
+{% endfor %}
+
+
 
 
 {% endblock %}
