@@ -45,6 +45,9 @@
                 <tr>
                     <th>Module</th>
                     <th>Jours</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <th>Supp</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +56,9 @@
                 <tr>
                     <td>{{ programme.unite }}</td>
                     <td>{{ programme.nbJours }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <td><a class="btn delete" href="{{ path('delete_programme', {'id': programme.id}) }}">X</a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
                         
@@ -73,7 +79,7 @@
         {% endif %}
     </div>
     <div id="stagiaire-form" class="form-toggle">
-        {{ form(stagiaireForm) }}
+        {# {{ form(stagiaireForm) }} #}
     </div>
 
 
@@ -97,7 +103,7 @@
                 <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a></td>
                 <td>{{ stagiaire.emailStagiaire }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <td><a class="btn delete" href="{{ path('deleteStagiaire_session', {'id': session.id }) }}">X</a></td>
+                    <td><a class="btn delete" href="{{ path('unregisterStagiaire', {'id': session.id }) }}">X</a></td>
                 {% endif %}
             </tr>
         {% endfor %}
