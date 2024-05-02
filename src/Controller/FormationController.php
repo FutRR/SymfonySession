@@ -51,6 +51,13 @@ class FormationController extends AbstractController
 
     }
 
+    #[Route('/formation/{id}/delete', name: 'delete_formation')]
+    public function delete(Formation $formation, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($formation);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_formation');
+    }
 
 
     #[Route('/formation/{id}', name: 'show_formation')]
