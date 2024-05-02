@@ -79,6 +79,14 @@
         {% endif %}
     </div>
     <div id="stagiaire-form" class="form-toggle">
+        {% for stagiaire in stagiaires %}
+            <div class="list session">
+                <div class="text">
+                    <h3>{{ stagiaire.fullNameStagiaire }}</h3>
+                </div>
+                    <a class="btn" href="{{ path('registerStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">Inscrire</a>
+            </div>
+        {% endfor %}
         {# {{ form(stagiaireForm) }} #}
     </div>
 
@@ -103,7 +111,7 @@
                 <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a></td>
                 <td>{{ stagiaire.emailStagiaire }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <td><a class="btn delete" href="{{ path('unregisterStagiaire', {'id': session.id }) }}">X</a></td>
+                    <td><a class="btn delete" href="{{ path('unregisterStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">X</a></td>
                 {% endif %}
             </tr>
         {% endfor %}

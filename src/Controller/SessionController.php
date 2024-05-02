@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\Mapping\Entity;
 use Exception;
 use App\Entity\Session;
 use App\Entity\Programme;
@@ -73,10 +74,24 @@ class SessionController extends AbstractController
         return $this->redirectToRoute('app_session');
     }
 
-    #[Route('/session/{id}/unregisterStagiaire', name: 'unregisterStagiaire')]
-    public function unregisterStagiaire(Session $session, Stagiaire $stagiaire, SessionRepository $sessionRepository, EntityManagerInterface $entityManager): Response
+    #[Route('/session/{id}/{id_stagiaire}/registerStagiaire', name: 'registerStagiaire')]
+    public function registerStagiaire(Session $session, int $id_stagiaire, EntityManagerInterface $entityManager): Response
     {
+        $stagiaire = $entityManager->getRepository(Stagiaire::class)->find($id_stagiaire);
+
+        $session->addStagiaire($stagiaire);
+        $entityManager->flush();
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
+
+
+    #[Route('/session/{id}/{id_stagiaire}/unregisterStagiaire', name: 'unregisterStagiaire')]
+    public function unregisterStagiaire(Session $session, int $id_stagiaire, EntityManagerInterface $entityManager): Response
+    {
+        $stagiaire = $entityManager->getRepository(Stagiaire::class)->find($id_stagiaire);
+
         $session->removeStagiaire($stagiaire);
+        $entityManager->flush();
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
@@ -98,36 +113,21 @@ class SessionController extends AbstractController
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }
 
-        // $stagiaireForm = $this->createFormBuilder()
-        //     ->add('stagiaires', EntityType::class, [
-        //         'class' => Stagiaire::class,
-        //         'choice_label' => 'fullnameStagiaire',
-        //         'attr' => ['class' => 'form'],
-        //         'multiple' => false,
-        //         'expanded' => false,
-        //         'label' => 'Stagiaire'
-        //     ])
-        //     ->add('ajouter', SubmitType::class, [
-        //         'attr' => ['class' => 'btn submit']
-        //     ])->getForm();
+        $query = $entityManager->getRepository(Stagiaire::class)->createQueryBuilder('s')
+            ->select('s')
+            ->where(':session NOT MEMBER OF s.Sessions')
+            ->setParameter('session', $session)
+            ->orderBy('s.nomStagiaire', 'ASC')
+            ->getQuery();
+        $stagiaires = $query->getResult();
 
-        // $stagiaireForm->handleRequest($request);
-        // if ($stagiaireForm->isSubmitted() && $stagiaireForm->isValid()) {
-        //     $data = $stagiaireForm->getData();
-        //     $stagiaire = $data['stagiaires'];
 
-        //     $session->addStagiaire($stagiaire);
 
-        //     $entityManager->persist($session);
-        //     $entityManager->flush();
-
-        //     return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
-        // }
 
 
         return $this->render("session/show.html.twig", [
             'moduleForm' => $moduleForm,
-            // 'stagiaireForm' => $stagiaireForm,
+            'stagiaires' => $stagiaires,
             'session' => $session,
         ]);
     }
