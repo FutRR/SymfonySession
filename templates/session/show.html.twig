@@ -87,12 +87,9 @@
                     <a class="btn" href="{{ path('registerStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">Inscrire</a>
             </div>
         {% endfor %}
-        {# {{ form(stagiaireForm) }} #}
     </div>
 
-
     {% if session.stagiaires | length > 0 %}
-
 
     <table>
         <thead>
@@ -121,8 +118,6 @@
 {% else %}
     <p>Aucun stagiaires inscrits</p>
 {% endif %}
-
-
 
 </section>
 

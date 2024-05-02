@@ -24,16 +24,8 @@ class SessionController extends AbstractController
     #[Route('/session', name: 'app_session')]
     public function index(SessionRepository $sessionRepository, FormationRepository $formationRepository): Response
     {
-        // $sessionsDevWeb = $sessionRepository->findBy(['Formation' => '1']);
-        // $sessionsBureautique = $sessionRepository->findBy(['Formation' => '2']);
-        // $sessionsCommerce = $sessionRepository->findBy(['Formation' => '3']);
-        // $sessionsEsthetique = $sessionRepository->findBy(['Formation' => '4']);
         $formations = $formationRepository->findAll();
         return $this->render('session/index.html.twig', [
-            // 'sessionsDevWeb' => $sessionsDevWeb,
-            // 'sessionsBureautique' => $sessionsBureautique,
-            // 'sessionsCommerce' => $sessionsCommerce,
-            // 'sessionsEsthetique' => $sessionsEsthetique,
             'formations' => $formations
         ]);
     }
@@ -63,7 +55,6 @@ class SessionController extends AbstractController
             'formAddSession' => $form,
             'edit' => $session->getId()
         ]);
-
     }
 
     #[Route('/session/{id}/delete', name: 'delete_session')]
@@ -120,10 +111,6 @@ class SessionController extends AbstractController
             ->orderBy('s.nomStagiaire', 'ASC')
             ->getQuery();
         $stagiaires = $query->getResult();
-
-
-
-
 
         return $this->render("session/show.html.twig", [
             'moduleForm' => $moduleForm,

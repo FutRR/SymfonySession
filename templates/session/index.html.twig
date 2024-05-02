@@ -12,81 +12,12 @@
 </div>
 <div class="line"></div>
 
-    {# {% if sessionsDevWeb | length > 0 %}
-        <div class="sous-titre">
-            <h2>Développement Web</h2>
-        </div>
-        {% for session in sessionsDevWeb %}
-            <div class="list session">
-                <div class="text">
-                    <a href="{{ path('show_session', {'id': session.id}) }}">
-                        <h3>{{ session.nomSession }}</h3>
-                            {% for programme in session.programmes %}
-                                {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
-                            {% endfor %}
-                    </a>
-                </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
-                {% endif %}
-
-            </div>     
-        {% endfor %}
-    {% endif %}
-
-    {% if sessionsBureautique | length > 0 %}
-            <div class="sous-titre">
-                <h2>Bureautique</h2>
-            </div>
-        {% for session in sessionsBureautique %}
-            <div class="list session">
-                <a href="{{ path('show_session', {'id': session.id}) }}">
-                    <h3>{{ session.nomSession }}</h3>
-                        {% for programme in session.programmes %}
-                            {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
-                        {% endfor %}
-                </a>
-            </div>     
-        {% endfor %}
-    {% endif %}
-
-{% if sessionsCommerce | length > 0 %}
-            <div class="sous-titre">
-                <h2>Commerce</h2>
-            </div>
-    {% for session in sessionsCommerce %}
-        <div class="list session">
-            <a href="{{ path('show_session', {'id': session.id}) }}">
-                <h3>{{ session.nomSession }}</h3>
-                    {% for programme in session.programmes %}
-                        {{ programme.unite.nomUnite }}{% if not loop.last %} - {% endif %}
-                    {% endfor %}
-        </a>
-    </div>     
-{% endfor %}
-{% endif %}
-
-{% if sessionsEsthetique | length > 0 %}
-    <div class="sous-titre">
-        <h2>Esthétique</h2>
-    </div>
-    {% for session in sessionsEsthetique %}
-        <div class="list session">
-            <a href="{{ path('show_session', {'id': session.id}) }}">
-                <h3>{{ session.nomSession }}</h3>
-                    {% for programme in session.programmes %}
-                        {{ programme.unite.nomUnite }} | {{ programme.nbJours }}{% if not loop.last %} - {% endif %}
-                    {% endfor %}
-        </a>
-    </div>     
-{% endfor %}
-{% endif %} #}
-
-    {% for formation in formations %}
+{% for formation in formations %}
         
     <div class="sous-titre">
         <h2>{{ formation }}</h2>
     </div>
+    
     {% if formation.sessions | length > 0 %}
         {% for session in formation.sessions %}
             <div class="list session">
@@ -106,7 +37,6 @@
     {% else %}
         Aucune sessions
     {% endif %}
-
 {% endfor %}
 
 
