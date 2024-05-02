@@ -18,7 +18,6 @@ class FormationType extends AbstractType
                 'label' => 'Titre de la formation',
                 "attr" => [
                     'class' => "form",
-                    'placeholder' => 'exemple@gmail.com'
                 ]
             ])
             ->add('valider', SubmitType::class, [
