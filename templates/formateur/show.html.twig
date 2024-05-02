@@ -6,7 +6,10 @@
     <div class="titre">
         <h2>Fiche Formateur</h2>
         {% if is_granted('ROLE_ADMIN') %}
+        <div class="btns">
             <a class="btn" href="{{ path('edit_formateur', {'id': formateur.id}) }}">Modifier</a>
+            <a class="btn delete" href="{{ path('delete_formateur', {'id': formateur.id}) }}">Supprimer</a>
+        </div>
         {% endif %}
     </div>
     <div class="line"></div>
