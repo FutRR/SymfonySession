@@ -22,14 +22,21 @@ composer install
 ```
 * Launch your DEV ENV local server
 * Start the Symfony server
+
 ```
-//Launch in background (allows to do other command lines)
-symfony server:start -d
-symfony serve -d
-// Doesn't allow to do other command lines
 symfony server:start
+```
+```
 symfony serve
 ```
+- Launch the server in background (recommanded)
+```
+symfony server:start -d
+```
+```
+symfony serve -d
+```
+
 * Add dashboard to the server's URL
 
 ![image](https://github.com/FutRR/SymfonySession/assets/126237383/ec1991f8-1be7-4826-b299-92a04b10bdf4)
