@@ -29,7 +29,7 @@ symfony server:start
 ```
 symfony serve
 ```
-- Launch the server in background (recommanded)
+-- Launch the server in background (recommanded)
 ```
 symfony server:start -d
 ```
