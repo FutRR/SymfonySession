@@ -78,9 +78,9 @@ class SessionController extends AbstractController
             $session->addStagiaire($stagiaire);
             $session->setNbPlaces($session->getNbPlaces() - 1);
             $entityManager->flush();
-            $this->addFlash('success', 'Stagiaire inscrit');
+            flash()->addSuccess('Stagiaire incrit');
         } else {
-            $this->addFlash('error', 'Aucune places disponible');
+            flash()->addError('Aucune place disponible');
         }
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }

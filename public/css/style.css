@@ -191,10 +191,11 @@ main{
 
     /* FLASH MESSAGES */
 
-    .flash-success{
+    /* .flash-success{
         position: absolute;
+        z-index: 5;
         right: 0;
-        bottom: 25vh;
+        top: 25vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -227,10 +228,9 @@ main{
         color: var(--white);
         background-color: #a31515;
         transition: all 400ms ease;
-    }
+    } */
 
-
-
+    
     /* DASHBOARD PAGE */
 
     #en-cours{

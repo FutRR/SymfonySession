@@ -46,7 +46,7 @@
                     <th>Module</th>
                     <th>Jours</th>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <th>Supp</th>
+                    <th>Supprimer</th>
                     {% endif %}
                 </tr>
             </thead>
@@ -54,10 +54,10 @@
 
             {% for programme in session.programmes %}
                 <tr>
-                    <td>{{ programme.unite }}</td>
+                    <td><strong>{{ programme.unite }}</strong></td>
                     <td>{{ programme.nbJours }}</td>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <td><a class="btn delete" href="{{ path('delete_programme', {'id': programme.id}) }}">X</a></td>
+                    <td><a class="btn delete" href="{{ path('delete_programme', {'id': programme.id}) }}">Supprimer</a></td>
                     {% endif %}
                 </tr>
             {% endfor %}
@@ -82,7 +82,8 @@
         {% for stagiaire in stagiaires %}
             <div class="list session">
                 <div class="text">
-                    <h3>{{ stagiaire.fullNameStagiaire }}</h3>
+                    <a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}"><h3>{{ stagiaire }}</h3></a>
+                    <p>{{ stagiaire.emailStagiaire }}</p> 
                 </div>
                     <a class="btn" href="{{ path('registerStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">Inscrire</a>
             </div>
@@ -105,10 +106,10 @@
         <tbody>
         {% for stagiaire in session.stagiaires %}
             <tr>
-                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{ stagiaire }}</a></td>
+                <td><a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}"><strong>{{ stagiaire }}</strong></a></td>
                 <td>{{ stagiaire.emailStagiaire }}</td>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <td><a class="btn delete" href="{{ path('unregisterStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">X</a></td>
+                    <td><a class="btn delete" href="{{ path('unregisterStagiaire', {'id': session.id, 'id_stagiaire': stagiaire.id | number_format }) }}">Désinscrire</a></td>
                 {% endif %}
             </tr>
         {% endfor %}
