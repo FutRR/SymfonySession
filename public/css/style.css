@@ -59,6 +59,14 @@ body{
     font-weight: 500;
 }
 
+.nav-link a::before {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
 
 .logo{
     font-size: 40px;
@@ -467,7 +475,7 @@ main{
 }
 
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1380px){
 
     .menuburger{
         position: fixed;
@@ -481,7 +489,8 @@ main{
         z-index: 4;
         position: fixed;
         height: 100vh;
-        width: 40vw;
+        min-width: 40vw;
+        width: fit-content;
         background: linear-gradient(180deg, rgba(27,153,136,1) 0%, rgba(105,214,200,1) 100%);
         top: 0;
         right: 0;

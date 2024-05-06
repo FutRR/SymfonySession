@@ -24,12 +24,12 @@
                 <div class="links">
 
                     <ul class="nav-links">
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_dashboard' %}active{% endif %}" href="{{ path('app_dashboard')}}">Dashboard</a></li>
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formation' %}active{% endif %}" href="{{ path('app_formation')}}">Formations</a></li>
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_session' %}active{% endif %}" href="{{ path('app_session')}}">Sessions</a></li>
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_stagiaire' %}active{% endif %}" href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formateur' %}active{% endif %}" href="{{ path('app_formateur')}}">Formateurs</a></li>
-                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_categorie' %}active{% endif %}" href="{{ path('app_categorie')}}">Catégories</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_dashboard' %}active{% endif %}" title="Dashboard" href="{{ path('app_dashboard')}}">Dashboard</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formation' %}active{% endif %}" title="Formations" href="{{ path('app_formation')}}">Formations</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_session' %}active{% endif %}" title="Sessions" href="{{ path('app_session')}}">Sessions</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_stagiaire' %}active{% endif %}" title="Stagiaires" href="{{ path('app_stagiaire')}}">Stagiaires</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_formateur' %}active{% endif %}" title="Formateurs" href="{{ path('app_formateur')}}">Formateurs</a></li>
+                        <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_categorie' %}active{% endif %}" title="Categories" href="{{ path('app_categorie')}}">Catégories</a></li>
                     </ul>
 
                     <ul class="nav-links">

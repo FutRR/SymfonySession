@@ -27,9 +27,6 @@
                         {{ session.nbPlaces }} {% if session.nbPlaces == 1 %} place {% else %} places {% endif %}restantes
                     </a>
                 </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn delete" href="{{ path('delete_session', {'id': session.id}) }}">Supprimer</a>
-                {% endif %}
             </div>
         {% endfor %}
     {% else %}
