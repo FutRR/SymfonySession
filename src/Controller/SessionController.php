@@ -34,6 +34,9 @@ class SessionController extends AbstractController
     #[Route('/session/{id}/edit', name: 'edit_session')]
     public function new_edit(Session $session = null, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $isNewSession = !$session;
+        $message = $isNewSession ? 'Session créée' : 'Session modifiée';
+
         if (!$session) {
             $session = new Session();
         }
@@ -47,6 +50,7 @@ class SessionController extends AbstractController
             $session = $form->getData();
             $entityManager->persist($session);
             $entityManager->flush();
+            $this->addFlash('success', $message);
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }
 

@@ -27,6 +27,9 @@ class FormationController extends AbstractController
     #[Route('/formation/{id}/edit', name: 'edit_formation')]
     public function new_edit(Formation $formation = null, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $isNewFormation = !$formation;
+        $message = $isNewFormation ? 'Formation créé' : 'Formation modifié';
+
         if (!$formation) {
             $formation = new Formation();
         }
@@ -40,7 +43,7 @@ class FormationController extends AbstractController
             $formation = $form->getData();
             $entityManager->persist($formation);
             $entityManager->flush();
-
+            $this->addFlash('success', $message);
             return $this->redirectToRoute('app_formation');
         }
 

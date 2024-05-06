@@ -26,6 +26,9 @@ class FormateurController extends AbstractController
     #[Route('/formateur/{id}/edit', name: 'edit_formateur')]
     public function new_edit(Formateur $formateur = null, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $isNewFormateur = !$formateur;
+        $message = $isNewFormateur ? 'Formateur créé' : 'Formateur modifié';
+
         if (!$formateur) {
             $formateur = new Formateur();
         }
@@ -39,7 +42,7 @@ class FormateurController extends AbstractController
             $formateur = $form->getData();
             $entityManager->persist($formateur);
             $entityManager->flush();
-
+            $this->addFlash('success', $message);
             return $this->redirectToRoute('app_formateur');
         }
 

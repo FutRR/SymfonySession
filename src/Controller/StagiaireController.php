@@ -27,6 +27,9 @@ class StagiaireController extends AbstractController
     #[Route('/stagiaire/{id}/edit', name: 'edit_stagiaire')]
     public function new_edit(Stagiaire $stagiaire = null, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $isNewStagiaire = !$stagiaire;
+        $message = $isNewStagiaire ? 'Stagiaire créé' : 'Stagiaire modifié';
+
         if (!$stagiaire) {
             $stagiaire = new Stagiaire();
         }
@@ -40,7 +43,7 @@ class StagiaireController extends AbstractController
             $stagiaire = $form->getData();
             $entityManager->persist($stagiaire);
             $entityManager->flush();
-
+            $this->addFlash('success', $message);
             return $this->redirectToRoute('app_stagiaire');
         }
 
