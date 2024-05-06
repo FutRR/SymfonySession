@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <form method="post">
@@ -8,14 +8,8 @@
         <div class="">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        <div>
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
     <div class="title">
-        <h1>Please sign in</h1>
+        <h1>Connexion</h1>
     </div>
     <div class="line"></div>
 
@@ -33,7 +27,7 @@
     >
 
     <button class="btn submit" type="submit">
-        Sign in
+        Se connecter
     </button>
 </form>
 {% endblock %}
