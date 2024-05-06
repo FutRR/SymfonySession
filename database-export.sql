@@ -57,12 +57,13 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.formation : ~4 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.formation : ~3 rows (environ)
 DELETE FROM `formation`;
 INSERT INTO `formation` (`id`, `titre_formation`) VALUES
 	(1, 'Développement Web'),
 	(2, 'Bureautique'),
-	(4, 'Esthétique');
+	(4, 'Esthétique'),
+	(10, 'Commerce');
 
 -- Listage de la structure de table symfonysessionfutterer. messenger_messages
 CREATE TABLE IF NOT EXISTS `messenger_messages` (
@@ -95,13 +96,14 @@ CREATE TABLE IF NOT EXISTS `programme` (
   CONSTRAINT `FK_3DDCB9FFEC4A74AB` FOREIGN KEY (`unite_id`) REFERENCES `unite` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.programme : ~7 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.programme : ~4 rows (environ)
 DELETE FROM `programme`;
 INSERT INTO `programme` (`id`, `session_id`, `unite_id`, `nb_jours`) VALUES
 	(2, 2, 3, 20),
 	(3, 2, 1, 50),
 	(4, 2, 2, 40),
-	(6, 3, 9, 5);
+	(6, 3, 9, 5),
+	(25, 16, 8, 30);
 
 -- Listage de la structure de table symfonysessionfutterer. session
 CREATE TABLE IF NOT EXISTS `session` (
@@ -123,10 +125,11 @@ CREATE TABLE IF NOT EXISTS `session` (
 -- Listage des données de la table symfonysessionfutterer.session : ~4 rows (environ)
 DELETE FROM `session`;
 INSERT INTO `session` (`id`, `formation_id`, `formateur_id`, `nom_session`, `date_debut`, `date_fin`, `nb_places`, `description`) VALUES
-	(1, 1, 2, 'Initiation PHP', '2024-04-29 08:30:00', '2024-05-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
-	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 14, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
+	(1, 1, 2, 'Initiation PHP', '2024-04-29 08:30:00', '2024-05-11 17:00:00', 14, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
+	(2, 1, 1, 'Full-Stack Avancé', '2024-05-13 08:30:00', '2025-01-11 17:00:00', 15, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper laoreet enim, in sodales ligula malesuada id. Nam consectetur dapibus.'),
 	(3, 2, 3, 'Initiation Photoshop', '2024-04-29 08:30:00', '2024-05-04 17:00:00', 4, 'photoshop'),
-	(12, 4, 2, 'Initiation JeSaisPas', '2024-06-10 08:30:00', '2024-06-19 17:00:00', 0, 'jsp');
+	(12, 4, 2, 'Initiation JeSaisPasDuTout', '2024-06-10 08:30:00', '2024-06-19 17:00:00', 0, 'jsp'),
+	(16, 10, 3, 'Initiation Vente au détail', '2024-07-11 09:00:00', '2024-09-06 17:00:00', 28, 'vente');
 
 -- Listage de la structure de table symfonysessionfutterer. stagiaire
 CREATE TABLE IF NOT EXISTS `stagiaire` (
@@ -158,16 +161,18 @@ CREATE TABLE IF NOT EXISTS `stagiaire_session` (
   CONSTRAINT `FK_D32D02D4BBA93DD6` FOREIGN KEY (`stagiaire_id`) REFERENCES `stagiaire` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.stagiaire_session : ~7 rows (environ)
 DELETE FROM `stagiaire_session`;
 INSERT INTO `stagiaire_session` (`stagiaire_id`, `session_id`) VALUES
 	(1, 3),
 	(1, 12),
-	(2, 2),
+	(1, 16),
+	(2, 1),
 	(2, 3),
 	(3, 2),
 	(3, 3),
-	(3, 12);
+	(3, 12),
+	(3, 16);
 
 -- Listage de la structure de table symfonysessionfutterer. unite
 CREATE TABLE IF NOT EXISTS `unite` (
@@ -179,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `unite` (
   CONSTRAINT `FK_unite_categorie` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysessionfutterer.unite : ~0 rows (environ)
+-- Listage des données de la table symfonysessionfutterer.unite : ~10 rows (environ)
 DELETE FROM `unite`;
 INSERT INTO `unite` (`id`, `nom_unite`, `categorie_id`) VALUES
 	(1, 'PHP', 1),
