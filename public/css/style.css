@@ -102,8 +102,6 @@ body{
 }
 
 
-
-
 /* MAIN */
 
 main{
@@ -190,6 +188,48 @@ main{
 .form-toggle{
     display: none !important;
 }
+
+    /* FLASH MESSAGES */
+
+    .flash-success{
+        position: absolute;
+        right: 0;
+        bottom: 25vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-self: flex-end;
+        width: 25vw;
+        height: auto;
+        text-align: center;
+        font-size: 25px;
+        margin: 0;
+        padding: 10px;
+        color: var(--white);
+        background-color: #25802a;
+        transition: all 400ms ease;
+    }
+
+    .flash-error{
+        position: absolute;
+        right: 0;
+        bottom: 25vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-self: flex-end;
+        width: 25vw;
+        height: auto;
+        text-align: center;
+        font-size: 25px;
+        margin: 0;
+        padding: 10px;
+        color: var(--white);
+        background-color: #a31515;
+        transition: all 400ms ease;
+    }
+
+
 
     /* DASHBOARD PAGE */
 

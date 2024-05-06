@@ -47,7 +47,6 @@ class SessionController extends AbstractController
             $session = $form->getData();
             $entityManager->persist($session);
             $entityManager->flush();
-
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }
 
@@ -62,6 +61,7 @@ class SessionController extends AbstractController
     {
         $entityManager->remove($session);
         $entityManager->flush();
+        $this->addFlash('success', 'Session supprimée');
         return $this->redirectToRoute('app_session');
     }
 
@@ -70,8 +70,14 @@ class SessionController extends AbstractController
     {
         $stagiaire = $entityManager->getRepository(Stagiaire::class)->find($id_stagiaire);
 
-        $session->addStagiaire($stagiaire);
-        $entityManager->flush();
+        if ($session->getNbPlaces() > 0) {
+            $session->addStagiaire($stagiaire);
+            $session->setNbPlaces($session->getNbPlaces() - 1);
+            $entityManager->flush();
+            $this->addFlash('success', 'Stagiaire inscrit');
+        } else {
+            $this->addFlash('error', 'Aucune places disponible');
+        }
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
@@ -82,7 +88,9 @@ class SessionController extends AbstractController
         $stagiaire = $entityManager->getRepository(Stagiaire::class)->find($id_stagiaire);
 
         $session->removeStagiaire($stagiaire);
+        $session->setNbPlaces($session->getNbPlaces() + 1);
         $entityManager->flush();
+        $this->addFlash('success', 'Stagiaire désinscrit');
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
 
@@ -100,6 +108,7 @@ class SessionController extends AbstractController
             $programme = $moduleForm->getData();
             $entityManager->persist($programme);
             $entityManager->flush();
+            $this->addFlash('success', 'Programme ajouté');
 
             return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
         }

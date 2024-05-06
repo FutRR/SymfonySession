@@ -23,6 +23,7 @@ class ProgrammeController extends AbstractController
     {
         $entityManager->remove($programme);
         $entityManager->flush();
+        $this->addFlash('success', 'Programme supprimé');
         return $this->redirectToRoute('show_session', ['id' => $programme->getSession()->getId()]);
 
     }

@@ -56,6 +56,7 @@ class StagiaireController extends AbstractController
     {
         $entityManager->remove($stagiaire);
         $entityManager->flush();
+        $this->addFlash('success', 'Stagiaire supprimé');
         return $this->redirectToRoute('app_stagiaire');
     }
 

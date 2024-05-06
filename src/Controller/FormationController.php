@@ -56,6 +56,7 @@ class FormationController extends AbstractController
     {
         $entityManager->remove($formation);
         $entityManager->flush();
+        $this->addFlash('success', 'Formation supprimée');
         return $this->redirectToRoute('app_formation');
     }
 

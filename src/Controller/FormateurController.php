@@ -55,6 +55,7 @@ class FormateurController extends AbstractController
     {
         $entityManager->remove($formateur);
         $entityManager->flush();
+        $this->addFlash('success', 'Formateur supprimé');
         return $this->redirectToRoute('app_formateur');
     }
 

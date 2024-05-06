@@ -7,15 +7,14 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
 
     </head>
     <body>
-
         <header>
 
             <nav id="navbar">
@@ -56,6 +55,14 @@
         <main>
         {% block body %}
         {% endblock %}
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         </main>
 
         <a href="#">
@@ -67,11 +74,11 @@
         </footer>
 
         {% block javascripts %}
-        {# {% block importmap %}
-        {{ importmap('app') }}
-        {% endblock %} #}
-        <script src="https://kit.fontawesome.com/19a031a4c5.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+            {# {% block importmap %}
+            {{ importmap('app') }}
+            {% endblock %} #}
+            <script src="https://kit.fontawesome.com/19a031a4c5.js" crossorigin="anonymous"></script>
+            <script src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
 
     </body>
