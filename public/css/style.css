@@ -43,7 +43,7 @@ body[data-theme = "dark"] #theme-toggle{
 }
 
 #theme-toggle:active{
-    rotate: 630deg;
+    rotate: 360deg;
 }
 
 /* NAVIGATION BAR */
