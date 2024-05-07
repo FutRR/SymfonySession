@@ -486,7 +486,7 @@ main{
 }
 
 .back-to-top:hover{
-    border-radius: 15px;
+    border-radius: 15px   ;
 }
 
 .back-to-top i{
