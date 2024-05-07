@@ -38,6 +38,12 @@ body[data-theme = "dark"] #theme-toggle{
     border-radius: 15px;
     cursor: pointer;
     background-color: transparent;
+    font-size: 20px;
+    transition: rotate 500ms ease-out;
+}
+
+#theme-toggle:active{
+    rotate: 630deg;
 }
 
 /* NAVIGATION BAR */
@@ -523,8 +529,14 @@ main{
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+        text-align: center;
         transition: 400ms;
         margin-right: -500px;
+    }
+
+    body[data-theme = "dark"] .links{
+        background: linear-gradient(180deg, rgba(27,153,136,1) 0%, rgb(40, 104, 95) 100%);
+
     }
 
     .nav-links{
