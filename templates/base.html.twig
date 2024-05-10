@@ -34,12 +34,12 @@
                         {% if app.user %}
                             <li class="nav-link"><a href="{{ path('app_logout')}}">Déconnexion</a></li>                                                
                         {% else %}
-                            <li class="nav-link"><a class="primary" href="{{ path('app_register')}}">Inscription</a></li>
-                            <li class="nav-link"><a href="{{ path('app_login')}}">Connexion</a></li>
+                            <li class="nav-link"><a class="primary {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}" href="{{ path('app_register')}}" title="Inscription">Inscription</a></li>
+                            <li class="nav-link"><a class="{% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login')}}" title="Connexion">Connexion</a></li>
                         {% endif %}
                     </ul>
 
-                    <button id="theme-toggle"><i class="fa-regular fa-moon"></i></button>
+                    <button id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
 
                 </div>
 

@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     body.setAttribute("data-theme", theme);
     themeToggle.innerHTML =
       theme === "light"
-        ? "<i class='fa-regular fa-moon'></i>"
-        : "<i class='fa-regular fa-sun'></i>";
+        ? "<i class='fa-solid fa-moon'></i>"
+        : "<i class='fa-solid fa-sun'></i>";
   }
 
   function toggleTheme() {

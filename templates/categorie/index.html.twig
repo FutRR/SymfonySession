@@ -11,7 +11,9 @@
 
     {% for categorie in categories %}
     <div class="list categorie">
-        <a href="{{ path('show_categorie', {'id': categorie.id}) }}">{{ categorie.nomCategorie }}</a>
+        <a href="{{ path('show_categorie', {'id': categorie.id}) }}">
+            <h3>{{ categorie.nomCategorie }}</h3>
+        </a>
     </div class="list categorie"> 
     {% endfor %}
 
