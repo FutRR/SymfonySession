@@ -39,6 +39,9 @@
         <div class="line-2"></div>
         {% for session in sessionsProchaines %}
             <div class="dashboard-session">
+                {% if session.nbPlaces == 0 %}
+                    <div class="complet">Complet</div> 
+                {% endif %}
                 <h4>{{ session.formation }}</h3>
                 <h3>{{ session }}</h2>
                 <p>{{ session.description }}</p>
