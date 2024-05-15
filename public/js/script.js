@@ -33,9 +33,9 @@ if (stagiaireForm) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // DARK/LIGHT MODE TOGGLE
-  var themeToggle = document.getElementById("theme-toggle");
-  var body = document.body;
-  var currentTheme = localStorage.getItem("theme") || "light";
+  const themeToggle = document.getElementById("theme-toggle");
+  let body = document.body;
+  let currentTheme = localStorage.getItem("theme") || "light";
   setTheme(currentTheme);
 
   function setTheme(theme) {
