@@ -1,5 +1,5 @@
 :root{
-    --primary: #1b9988;
+    --primary: #FF9900;
     --black: #000;
     --white: #f6f6f6;
 }
@@ -19,7 +19,6 @@ body{
 }
 
 body[data-theme = "dark"]{
-    --primary: #1b9988;
     --black: #f6f6f6;
     color: var(--white) !important;
     background: #333 !important;
